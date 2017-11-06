@@ -1,2 +1,16 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+.auth-module {
+  float: right;
+}
+
+.blog-post {
+  margin: 15px 0;
+}
+
+.read-more-less {
+  display: block;
+  text-align: right;
+}
