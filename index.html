@@ -93,7 +93,7 @@
 <!---End of Nav Dashboard-->
 
 <!--List of Posts/Pages-->
-<div class="col-xs-10 col-sml-10 col-md-10">
+<!-- <div id="dashboard-posts"class="col-xs-10 col-sml-10 col-md-10">
   <h2>All Blog Posts</h2>
   <div class="list-group">
     <div class="list-group-item">
@@ -115,8 +115,25 @@
       <a>delete</a>
     </div>
   </div>
-</div>
+</div> -->
 <!--End list of Posts/Pages-->
+
+<!--Edit Post/Page View-->
+<div class="col-xs-10 col-sml-10 col-md-10">
+<form>
+  <div class="form-group">
+    <label for="edit-title">Title</label>
+    <input type="text" class="form-control" id="edit-title">
+  </div>
+  <div class="form-group">
+    <label for="edit-content">Content</label>
+    <textarea class="form-control" id="edit-content" rows="20"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Publish</button>
+  <button type="submit" class="btn btn-secondary">Cancel</button>
+</form>
+</div>
+<!--End of Edit Post/Page View-->
 
     </body>
 </html>
