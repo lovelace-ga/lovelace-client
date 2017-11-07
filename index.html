@@ -56,7 +56,9 @@
                 <br>
                 <input class="form-control form-control-lg" type="password" name="credentials[password_confirmation]" placeholder="Enter Password Confirmation">
                 <br>
-                <input type="submit" name="submit" value="Continue" class="btn btn-primary btn-lg mb-1">
+                 <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
+                 <br>
+                <input type="submit" name="submit" value="Create Account and Sign In" class="btn btn-primary mb-1">
                 <br>
                 <a id="sign-in-link" class="link">Already have an account?</a>
               </fieldset>
@@ -134,16 +136,33 @@
 </div> -->
 <!--End list of Posts/Pages-->
 
+<!-- New Post/Page View -->
+<!-- <div id='create-view' class="col-xs-10 col-sml-10 col-md-10">
+<form>
+  <div class="form-group">
+    <label for="create-title">Title</label>
+    <input type="text" name="post[title]" class="form-control" id="create-title">
+  </div>
+  <div class="form-group">
+    <label for="create-content">Content</label>
+    <textarea class="form-control" name="post[content]" id="create-content" rows="20"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Publish</button>
+  <button type="submit" class="btn btn-secondary">Cancel</button>
+</form>
+</div> -->
+<!-- End of New Post/Page View -->
+
 <!--Edit Post/Page View-->
 <!-- <div id='edit-view' class="col-xs-10 col-sml-10 col-md-10">
 <form>
   <div class="form-group">
     <label for="edit-title">Title</label>
-    <input type="text" class="form-control" id="edit-title">
+    <input type="text" name="post[title]"class="form-control" id="edit-title">
   </div>
   <div class="form-group">
     <label for="edit-content">Content</label>
-    <textarea class="form-control" id="edit-content" rows="20"></textarea>
+    <textarea class="form-control" name="post[content]" id="edit-content" rows="20"></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Publish</button>
   <button type="submit" class="btn btn-secondary">Cancel</button>
