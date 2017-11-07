@@ -27,6 +27,7 @@ const dashboardView = function () {
   $('#dashboard-posts').hide()
   $('#sign-out-link').show()
 }
+
 const createView = function () {
   $('#site-list').hide()
   $('#sign-in-div').hide()
@@ -39,6 +40,7 @@ const createView = function () {
   $('#public-nav').hide()
   $('#dashboard-posts').hide()
 }
+
 const editView = function () {
   $('#site-list').hide()
   $('#sign-in-div').hide()
@@ -51,6 +53,7 @@ const editView = function () {
   $('#public-nav').hide()
   $('#dashboard-posts').hide()
 }
+
 const publicView = function () {
   $('#site-list').hide()
   $('#sign-in-div').hide()
