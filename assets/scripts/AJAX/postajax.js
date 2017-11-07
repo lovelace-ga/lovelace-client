@@ -5,19 +5,13 @@ const store = require('../store')
 const index = function () {
   return $.ajax({
     url: config.apiOrigin + '/posts',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    method: 'GET'
   })
 }
 const show = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/posts/' + id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    method: 'GET'
   })
 }
 const create = function (data) {
