@@ -56,8 +56,7 @@ const createSiteSuccess = function (data) {
   store.site = data.site
   console.log('createSiteSuccess data is', data)
   console.log('store.site is', store.site)
-  // hide Landing Page
-  // show Dashboard
+  views.dashboardView()
   // show success message to user
 }
 
