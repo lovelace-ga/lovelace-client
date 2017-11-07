@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const views = require('../JQviews')
 
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./authajax')
@@ -43,9 +44,10 @@ const onSignIn = function (event) {
           // siteId = site._ownerId
           store.site = site
         }
-        console.log('site id is', store.site)
+        console.log('onSignIn store.siteListTemplate', store.site)
       })
     })
+    .then(() => views.dashboardView())
 }
 
 const onSignOut = function (event) {

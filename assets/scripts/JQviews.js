@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('./store')
+
 const landingPageView = function () {
   $('#site-list').show()
   $('#sign-in-div').show()
@@ -31,6 +33,7 @@ const dashboardView = function () {
   $('#public-posts').hide()
   $('#sign-out-link').show()
   $('#settings-view').hide()
+  $('#navbar-header').text(store.site.name)
 }
 
 const createPostView = function () {
@@ -85,6 +88,7 @@ const settingsView = function () {
   $('app-nav-bar').show()
   $('#dash-nav').show()
   $('#settings-view').show()
+  $('#update-site-name input:text').val(store.site.name)
   $('#dashboard-list').hide()
   $('#edit-view').hide()
   $('#create-post-view').hide()

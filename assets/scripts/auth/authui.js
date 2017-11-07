@@ -2,6 +2,7 @@
 
 const views = require('../JQviews')
 const store = require('../store')
+const landingEvents = require('../landingpage/events')
 
 const signUpSuccess = function (data) {
   console.log('signUpSuccess data is', data)
@@ -19,7 +20,7 @@ const signInSuccess = function (data) {
   $('#sign-in input:text').val(null)
   $('#sign-in input:password').val(null)
   store.user = data.user
-  views.dashboardView()
+
   // show success message to user
 }
 
@@ -32,6 +33,7 @@ const signOutSuccess = function () {
   console.log('Signed Out successfully!')
   store.user = null
   console.log(store.user)
+  landingEvents.listAllSites()
   views.landingPageView()
   // Show success message to user
 }
