@@ -22,6 +22,6 @@ $(() => {
   views.landingPageView()
   dashEvents.addHandlers()
   authEvents.addHandlers()
-  // landingEvents.addHandlers()
+  landingEvents.addHandlers()
   // visitorEvents.addHandlers()
 })

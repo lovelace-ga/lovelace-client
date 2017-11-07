@@ -1,7 +1,7 @@
 'use strict'
 
 const getFormFields = require('../../../lib/get-form-fields')
-const pageApi = require('../AJAX/pagesajax.js')// UPDATE THIS (change file name)
+const pageApi = require('../AJAX/pagesajax.js') // UPDATE THIS (change file name)
 const postApi = require('../AJAX/postajax.js') // UPDATE THIS
 const authApi = require('../auth/authajax')
 const ui = require('./ui')
