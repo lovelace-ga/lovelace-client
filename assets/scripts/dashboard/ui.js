@@ -1,4 +1,5 @@
 'use strict'
+const store = require('../store')
 
 const publishPostSuccess = function (data) {
   $('#new-post-msg').text('New post created successfully!')
@@ -119,6 +120,28 @@ const changePasswordFailure = function (error) {
   // show failure message to user
 }
 
+const changeSiteNameSuccess = function (data) {
+  console.log('changeSiteNameSuccess data is', data)
+  // Show success message to user
+}
+
+const changeSiteNameFailure = function (error) {
+  console.log('changeSiteNameFailure data is', error)
+  // Show success message to user
+}
+
+const getOneSiteSuccess = function (data) {
+  console.log('getOneSiteSuccess data is', data)
+  store.site = data.site
+  $('#navbar-header').text(store.site.name)
+  // Show success message to user
+}
+
+const getOneSiteFailure = function (error) {
+  console.log('changeSiteNameFailure data is', error)
+  // Show success message to user
+}
+
 module.exports = {
   publishPostSuccess,
   publishPostFailure,
@@ -145,5 +168,9 @@ module.exports = {
   updatePageSuccess,
   updatePageFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  changeSiteNameSuccess,
+  changeSiteNameFailure,
+  getOneSiteSuccess,
+  getOneSiteFailure
 }

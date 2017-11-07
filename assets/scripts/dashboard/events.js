@@ -1,9 +1,11 @@
 'use strict'
 
+const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields')
 const pageApi = require('../AJAX/pagesajax.js') // UPDATE THIS (change file name)
 const postApi = require('../AJAX/postajax.js') // UPDATE THIS
 const authApi = require('../auth/authajax')
+const siteApi = require('../AJAX/siteajax')
 const ui = require('./ui')
 const views = require('../JQviews')
 
@@ -149,12 +151,23 @@ const onCancelUpdatePage = function (event) {
 }
 
 const onChangePassword = function (event) {
-  const data = getFormFields(this)
+  const data = getFormFields(event.target)
   event.preventDefault()
   console.log('onChangePassword data is', data)
   authApi.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
+}
+
+const onChangeSiteName = function (event) {
+  const data = getFormFields(event.target)
+  console.log('onChangeSiteName data is', data)
+  event.preventDefault()
+  siteApi.updateSite(data)
+    .then(ui.changeSiteNameSuccess)
+    .then(() => siteApi.getOneSite(store.site.id))
+    .then(ui.getOneSiteSuccess)
+    .catch(ui.changeSiteNameFailure)
 }
 
 const onViewSettings = function (event) {
@@ -182,8 +195,9 @@ const addHandlers = function () {
   $('#edit-page').on('click', onEditPage) // DOES NOT EXIST
   $('#update-page').on('submit', onUpdatePage) // DOES NOT EXIST
   $('#cancel-update-page').on('click', onCancelUpdatePage) // DOES NOT EXIST
-  $('#change-password').on('submit', onChangePassword)
   $('#settings').on('click', onViewSettings)
+  $('#change-password').on('submit', onChangePassword)
+  $('#update-site-name').on('submit', onChangeSiteName)
 }
 
 module.exports = {
