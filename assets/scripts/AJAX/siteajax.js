@@ -27,7 +27,9 @@ const createSite = function (data) {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: data // data will come from get form fields,
+    data: {
+      site: data
+    }// data will come from get form fields,
     // it will need to be in the same format we use in our curl request. the only value is 'name'
   })
 }

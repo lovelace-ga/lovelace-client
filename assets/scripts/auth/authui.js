@@ -53,6 +53,18 @@ const changePasswordFailure = function (error) {
   console.log('changePasswordFailure error is', error)
   // show failure message to user
 }
+
+const createSiteSuccess = function (data) {
+  console.log('createSiteSuccess data is', data)
+  // hide Landing Page
+  // show Dashboard
+  // show success message to user
+}
+
+const createSiteFailure = function (error) {
+  console.log('changeSiteFailure error is', error)
+  // show failure message to user
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -61,5 +73,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  createSiteSuccess,
+  createSiteFailure
 }

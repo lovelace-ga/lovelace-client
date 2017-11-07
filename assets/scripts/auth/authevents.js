@@ -3,17 +3,23 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./authajax')
 const ui = require('./authui')
+const apiSite = require('../AJAX/siteajax')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
   console.log('onSignUp data is', data)
+  const siteData = data.site
+  console.log('siteData is', siteData)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
     .then(() => api.signIn(data))
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
+    .then(() => apiSite.createSite(siteData))
+    .then(ui.createSiteSuccess)
+    .catch(ui.createSiteFailure)
 }
 
 const onSignIn = function (event) {
