@@ -79,13 +79,13 @@
 <!--Left Nav Dashboard -->
 <div id='dash-nav' class="col-xs-10 col-sm-2 col-md-2">
 <ul class="nav nav-pills nav-stacked ">
-  <li><button id='new-post' role="presentation" type="button" class="btn btn-info">New Post</button></li>
-  <li><button id='new-page' role="presentation" type="button" class="btn btn-info">New Page</button></li>
+  <li><button role="presentation" type="button" class="btn btn-info">View Site</button></li>
   <br>
-  <li role="presentation" class="active"><a href="#">View Site</a></li>
-  <li role="presentation"><a href="#">Posts</a></li>
-  <li role="presentation"><a href="#">Pages</a></li>
-  <li role="presentation"><a href="#">Settings</a></li>
+  <li role="presentation" id="view-posts" class="active"><a>View Posts</a></li>
+  <li role="presentation" id='new-post'><a>Add Post</a>
+  <li role="presentation" id="view-pages"><a>View Pages</a></li>
+  <li role="presentation" id="new-page"><a>Add Page</a>
+  <li role="presentation" id="settings"><a>Settings</a></li>
 </ul>
 </div>
 <!---End of Nav Dashboard-->
@@ -116,8 +116,8 @@
 </div>
 <!--End list of Posts/Pages-->
 
-<!-- New Post/Page View -->
-<div id='create-view' class="col-xs-10 col-sml-10 col-md-10">
+<!-- New Post View-->
+<div id='create-post-view' class="col-xs-10 col-sml-10 col-md-10">
 <form>
   <div class="form-group">
     <label for="create-title">Title</label>
@@ -128,10 +128,27 @@
     <textarea class="form-control" name="post[content]" id="create-content" rows="20"></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Publish</button>
-  <button type="submit" class="btn btn-secondary">Cancel</button>
+  <button id="cancel-create-post" type="submit" class="btn btn-secondary">Cancel</button>
 </form>
 </div>
-<!-- End of New Post/Page View -->
+<!-- End of New Post View -->
+
+<!-- New Page View-->
+<div id='create-page-view' class="col-xs-10 col-sml-10 col-md-10">
+<form>
+  <div class="form-group">
+    <label for="create-title">Title</label>
+    <input type="text" name="post[title]" class="form-control" id="create-title">
+  </div>
+  <div class="form-group">
+    <label for="create-content">Content</label>
+    <textarea class="form-control" name="post[content]" id="create-content" rows="20"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Publish</button>
+  <button id="cancel-create-page" type="submit" class="btn btn-secondary">Cancel</button>
+</form>
+</div>
+<!-- End of New Page View -->
 
 <!--Edit Post/Page View-->
 <div id='edit-view' class="col-xs-10 col-sml-10 col-md-10">
@@ -192,24 +209,8 @@
 <!---End of Left Nav Site Page-->
 
 <!--List of Site's Posts-->
-<div id="dashboard-posts"class="col-xs-10 col-sml-10 col-md-10">
-  <div class="list-group">
-    <div class="list-group-item blog-post">
-      <h2 class="list-group-item-heading">My first blog</h2>
-      <p class="list-group-item-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit duis tristique sollicitudin. Eleifend donec pretium vulputate sapien nec. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Vivamus at augue eget arcu dictum varius. A diam sollicitudin tempor id eu.</p>
-      <a class="read-more-less">read more</a>
-    </div>
-    <div class="list-group-item blog-post">
-      <h2 class="list-group-item-heading">My first blog</h2>
-      <p class="list-group-item-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit duis tristique sollicitudin. Eleifend donec pretium vulputate sapien nec. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Vivamus at augue eget arcu dictum varius. A diam sollicitudin tempor id eu.</p>
-      <a class="read-more-less">read more</a>
-    </div>
-    <div class="list-group-item blog-post">
-      <h2 class="list-group-item-heading">My first blog</h2>
-      <p class="list-group-item-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit duis tristique sollicitudin. Eleifend donec pretium vulputate sapien nec. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Vivamus at augue eget arcu dictum varius. A diam sollicitudin tempor id eu.</p>
-      <a class="read-more-less">read more</a>
-    </div>
-  </div>
+<div id="public-posts"class="col-xs-10 col-sml-10 col-md-10">
+  <div class="list-group"></div>
 </div>
 <!--End list of Sites Posts-->
 
