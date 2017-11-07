@@ -16,6 +16,8 @@ const signUpFailure = function (error) {
 
 const signInSuccess = function (data) {
   console.log('signInSuccess data is', data)
+  $('#sign-in input:text').val(null)
+  $('#sign-in input:password').val(null)
   store.user = data.user
 }
 
@@ -32,11 +34,22 @@ const signOutSuccess = function () {
 const signOutFailure = function (error) {
   console.log('signOutFailure error is', error)
 }
+
+const changePasswordSuccess = function () {
+  console.log('Changed Password successfully!')
+  $('#change-password input').val(null)
+}
+
+const changePasswordFailure = function (error) {
+  console.log('changePasswordFailure error is', error)
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }

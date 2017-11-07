@@ -12,34 +12,72 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+
+
+      <!--Nav Bar-->
+          <nav id="app-nav-bar" class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed border" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-brand">Company Name</div>
+      </div>
+      <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a id="sign-out-link" class = "nav-link">Log Out</a></li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <!--End of Nav Bar-->
       <!---Landing Page-->
-      <!-- <h1 ID=>LoveLace Landing Page</h1>
-      <hr>
-      <div id="site-list" class="col-xs-10 col-md-6 sign-in-module">
+      <!-- <h1> LoveLace Landing Page</h1> -->
+      <!-- <hr> -->
+      <!-- <div id="site-list" class="col-xs-10 col-md-9 sign-in-module">
         <ul>
           <li> Wordpress </li>
         </ul>
-      </div>
-      <div id="sign-up-div" class="col-xs-10 col-md-6 sign-in-module">
+      </div> -->
+      <!---End Landing Page-->
+
+
+      <!-- <div id="sign-up-div" class="col-xs-10 col-md-3 sign-in-module">
             <form id="sign-up">
               <fieldset>
                 <legend class="sign-in-header">Sign Up</legend>
-                <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
-                <br>
                 <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email">
                 <br>
                 <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password">
                 <br>
                 <input class="form-control form-control-lg" type="password" name="credentials[password_confirmation]" placeholder="Enter Password Confirmation">
                 <br>
-                <input type="submit" name="submit" value="Create Account" class="btn btn-primary btn-lg mb-1">
+                <input type="submit" name="submit" value="Continue" class="btn btn-primary btn-lg mb-1">
                 <br>
-                <div id="sign-in-link" class="link">Already have an account?</div>
+                <a id="sign-in-link" class="link">Already have an account?</a>
               </fieldset>
             </form>
-          </div>
+          </div> -->
 
-      <div id="sign-in-div" class="col-xs-10 col-md-6 sign-in-module">
+
+          <!-- <div id="site-name-div" class="col-xs-10 col-md-3 sign-in-module">
+                <form id="create-site-name">
+                  <fieldset>
+                    <legend class="sign-in-header">Sign Up</legend>
+                    <input class="form-control form-control-lg" type="password" name="site[name]" placeholder="Enter Site Name">
+                    <br>
+                    <input type="submit" name="submit" value="Create Account" class="btn btn-primary btn-lg mb-1">
+                    <br>
+                    <a id="sign-in-link" class="link">Already have an account?</a>
+                  </fieldset>
+                </form>
+              </div> -->
+
+      <!-- <div id="sign-in-div" class="col-xs-10 col-md-2 sign-in-module">
             <form id="sign-in">
               <fieldset>
           <legend class="sign-in-header .col-form-legend">Sign In</legend>
@@ -49,37 +87,15 @@
           <br>
           <input type="submit" name="submit" value="Sign In" class="btn btn-primary btn-lg mb-1">
           <br>
-          <div id="sign-up-link" class="link">Create an account</div>
+          <a id="sign-up-link" class="link">Create an account</a>
         </fieldset>
       </form>
     </div> -->
 
 
-    <!---End of Landing Page-->
-    <!--Nav Bar-->
-        <nav id="app-nav-bar" class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed border" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <div class="navbar-brand">Company Name</div>
-    </div>
-    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a id="sign-out-link" class = "nav-link">Log Out</a></li>
-      </ul>
-
-    </div>
-  </div>
-</nav>
-<!--End of Nav Bar-->
 
 <!--Left Nav Dashboard -->
-<!-- <div id='dash-nav' class="col-xs-10 col-sm-2 col-md-2">
+<div id='dash-nav' class="col-xs-10 col-sm-2 col-md-2">
 <ul class="nav nav-pills nav-stacked ">
   <li><button id='new-post' role="presentation" type="button" class="btn btn-info">New Post</button></li>
   <li><button id='new-page' role="presentation" type="button" class="btn btn-info">New Page</button></li>
@@ -89,7 +105,7 @@
   <li role="presentation"><a href="#">Posts</a></li>
   <li role="presentation"><a href="#">Settings</a></li>
 </ul>
-</div> -->
+</div>
 <!---End of Nav Dashboard-->
 
 <!--List of Posts/Pages-->
@@ -135,18 +151,48 @@
 </div> -->
 <!--End of Edit Post/Page View-->
 
+<!--Settings View -->
+<div id="change-password-div" class="col-xs-10 col-sml-6 col-md-6 sign-in-module">
+    <form id="change-password">
+        <legend class="sign-in-header">Change Password</legend>
+      <div class="form-group">
+        <label>Current Password</label>
+        <input type="password" name="passwords[old]" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" name="passwords[new]" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Password</button>
+    </form>
+</div>
+
+<div id="change-site-name-div" class="col-xs-10 col-sml-6 col-md-6 sign-in-module">
+    <form id="update-site-name">
+        <legend class="sign-in-header">Change Site Name</legend>
+      <div class="form-group">
+        <label>Site Name</label>
+        <input type="text" name="site[name]" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Site Name</button>
+    </form>
+</div>
+
+<!--End of Settings View-->
+
+
 <!--Left Nav Site Page-->
-<div id='public-nav' class="col-xs-10 col-sm-2 col-md-2">
+<!-- <div id='public-nav' class="col-xs-10 col-sm-2 col-md-2">
 <ul class="nav nav-pills nav-stacked">
   <li role="presentation"><a href="#">Blog</a></li>
   <li role="presentation"><a href="#">Page 1</a></li>
   <li role="presentation"><a href="#">Page 2</a></li>
 </ul>
-</div>
+</div> -->
 <!---End of Left Nav Site Page-->
 
 <!--List of Site's Posts-->
-<div id="dashboard-posts"class="col-xs-10 col-sml-10 col-md-10">
+<!-- <div id="dashboard-posts"class="col-xs-10 col-sml-10 col-md-10">
   <div class="list-group">
     <div class="list-group-item blog-post">
       <h2 class="list-group-item-heading">My first blog</h2>
@@ -164,7 +210,7 @@
       <a class="read-more-less">read more</a>
     </div>
   </div>
-</div>
+</div> -->
 <!--End list of Sites Posts-->
 
     </body>
