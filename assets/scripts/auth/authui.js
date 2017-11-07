@@ -32,26 +32,13 @@ const signOutSuccess = function () {
   console.log('Signed Out successfully!')
   store.user = null
   console.log(store.user)
-  // Hide logout link
-  // Hide Dashboard
-  // Show Landing Page
+  views.landingPageView()
   // Show success message to user
 }
 
 const signOutFailure = function (error) {
   console.log('signOutFailure error is', error)
   // Show failure message to user
-}
-
-const changePasswordSuccess = function () {
-  console.log('Changed Password successfully!')
-  $('#change-password input').val(null)
-  // Show success message to user
-}
-
-const changePasswordFailure = function (error) {
-  console.log('changePasswordFailure error is', error)
-  // show failure message to user
 }
 
 const createSiteSuccess = function (data) {
@@ -73,8 +60,6 @@ module.exports = {
   signInFailure,
   signOutSuccess,
   signOutFailure,
-  changePasswordSuccess,
-  changePasswordFailure,
   createSiteSuccess,
   createSiteFailure
 }
