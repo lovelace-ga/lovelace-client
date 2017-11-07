@@ -1,7 +1,7 @@
 'use strict'
 const views = require('../JQviews')
 const siteAjax = require('../AJAX/siteajax')
-const postAjax = require('../AJAX/postajax')
+// const postAjax = require('../AJAX/postajax')
 const publicPostsTemplate = require('../templates/publicblog.handlebars')
 
 const loadSite = function (siteId) {
