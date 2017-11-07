@@ -3,14 +3,13 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const pageApi = require('../AJAX/pagesajax.js')// UPDATE THIS (change file name)
 const postApi = require('../AJAX/postajax.js') // UPDATE THIS
+const authApi = require('../auth/authajax')
 const ui = require('./ui')
+const views = require('../JQviews')
 
 const onNewPost = function (event) {
   event.preventDefault()
-  // show hide a bunch of stuff
-  // show empty title/content post form (need to add!)
-  // need to add 'new-post' div
-  // will have buttons "Publish" and "Cancel"
+  views.createPostView()
 }
 
 const onPublishNewPost = function (event) {
@@ -23,16 +22,14 @@ const onPublishNewPost = function (event) {
 
 const onCancelNewPost = function (event) {
   event.preventDefault()
-  // go back to dashboard view
-  // clear 'Title' text with .text('')
-  // clear 'Content' text with .text('')
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  views.dashboardView()
 }
 
 const onNewPage = function (event) {
   event.preventDefault()
-  // show hide a bunch of stuff
-  // show empty title/content post form (need to add!)
-  // will have buttons "Publish" and "Cancel"
+  views.createPageView()
 }
 
 const onPublishNewPage = function (event) {
@@ -45,13 +42,14 @@ const onPublishNewPage = function (event) {
 
 const onCancelNewPage = function (event) {
   event.preventDefault()
-  // go back to main dashboard view
-  // clear 'Title' text with .text('')
-  // clear 'Content' text with .text('')
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
+  views.dashboardView()
 }
 
 const onGetPosts = function (event) {
   event.preventDefault()
+  views.dashboardView()
   postApi.index()
     .then(ui.getPostsSuccess) // Handlebars!
     .catch(ui.getPostsFailure)
@@ -60,6 +58,7 @@ const onGetPosts = function (event) {
 // for if we decide to view post
 const onViewPost = function (event) {
   event.preventDefault()
+  views.editView()
   const selectedPost = $(this).parent.attr('data-id') // stored in handlebar
   postApi.show(selectedPost)
     .then(ui.getPostSuccess)
@@ -101,6 +100,7 @@ const onCancelUpdatePost = function (event) {
 
 const onGetPages = function (event) {
   event.preventDefault()
+  views.dashboardView()
   pageApi.index()
     .then(ui.getPagesSuccess) // Handlebars!
     .catch(ui.getPagesFailure)
@@ -148,28 +148,42 @@ const onCancelUpdatePage = function (event) {
   // note: this will not update the page with cleared out values.
 }
 
+const onChangePassword = function (event) {
+  const data = getFormFields(this)
+  event.preventDefault()
+  console.log('onChangePassword data is', data)
+  authApi.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+}
+
+const onViewSettings = function (event) {
+  event.preventDefault()
+  views.settingsView()
+}
+
 const addHandlers = function () {
   $('#new-post').on('click', onNewPost)
   $('#publish-new-post').on('submit', onPublishNewPost) // DOES NOT EXIST YET
-  $('#cancel-new-post').on('click', onCancelNewPost) // DOES NOT EXIST YET
-
-  $('#new-page').on('click', onNewPage) // DOES NOT EXIST YET
+  $('#cancel-create-post').on('click', onCancelNewPost)
+  $('#new-page').on('click', onNewPage)
   $('#publish-new-page').on('submit', onPublishNewPage) // DOES NOT EXIST YET
-  $('#cancel-new-page').on('click', onCancelNewPage) // DOES NOT EXIST YET
-
-  $('#view-posts').on('submit', onGetPosts) // DOES NOT EXIST - what is "presentation role"?
+  $('#cancel-create-page').on('click', onCancelNewPage)
+  $('#view-posts').on('click', onGetPosts)
   $('#view-post').on('submit', onViewPost) // DOES NOT EXIST
   $('#delete-post').on('submit', onDeletePost) // DOES NOT EXIST - <a>?
   $('#edit-post').on('click', onEditPost) // DOES NOT EXIST (Handlebars) - will be <a>?
   $('#update-post').on('submit', onUpdatePost) // DOES NOT EXIST
   $('#cancel-update-post').on('click', onCancelUpdatePost) // DOES NOT EXIST
 
-  $('#view-pages').on('submit', onGetPages) // DOES NOT EXIST - what is "presentation role"?
+  $('#view-pages').on('click', onGetPages) // DOES NOT EXIST - what is "presentation role"?
   $('#view-page').on('submit', onViewPage) // DOES NOT EXIST
   $('#delete-page').on('submit', onDeletePage) // DOES NOT EXIST - <a>?
   $('#edit-page').on('click', onEditPage) // DOES NOT EXIST
   $('#update-page').on('submit', onUpdatePage) // DOES NOT EXIST
   $('#cancel-update-page').on('click', onCancelUpdatePage) // DOES NOT EXIST
+  $('#change-password').on('submit', onChangePassword)
+  $('#settings').on('click', onViewSettings)
 }
 
 module.exports = {
