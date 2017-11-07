@@ -2,7 +2,7 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const dashEvents = require('./dashboad/events')
+const dashEvents = require('./dashboard/events')
 const authEvents = require('./auth/authevents')
 const landingEvents = require('./landingpage/events')
 const visitorEvents = require('./visitorsite/events')
