@@ -24,15 +24,20 @@ const onSignIn = function (event) {
     .catch(ui.signInFailure)
 }
 
+const onSignOut = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
-  // $('#sign-out-link').on('click', onSignOut)
+  $('#sign-out-link').on('click', onSignOut)
   // $('#change-password').on('submit', onChangePassword)
   // $('#sign-up-link').on('click', onShowSignUp)
   // $('#sign-in-link').on('click', onShowSignIn)
-  // $('#change-password-link').on('click', onShowChangePassword)
-  // $('#cancel-change-password').on('click', onHideChangePassword)
 }
 
 module.exports = {

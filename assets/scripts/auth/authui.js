@@ -23,9 +23,20 @@ const signInFailure = function (error) {
   console.log('signInFailure error is', error)
 }
 
+const signOutSuccess = function () {
+  console.log('Signed Out successfully!')
+  store.user = null
+  console.log(store.user)
+}
+
+const signOutFailure = function (error) {
+  console.log('signOutFailure error is', error)
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signInFailure
+  signInFailure,
+  signOutSuccess,
+  signOutFailure
 }
