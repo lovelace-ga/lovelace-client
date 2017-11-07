@@ -1,5 +1,6 @@
 'use strict'
 
+const views = require('../JQviews')
 const store = require('../store')
 
 const signUpSuccess = function (data) {
@@ -18,8 +19,7 @@ const signInSuccess = function (data) {
   $('#sign-in input:text').val(null)
   $('#sign-in input:password').val(null)
   store.user = data.user
-  // hide Landing Page
-  // show Dashboard
+  views.dashboardView()
   // show success message to user
 }
 
@@ -53,6 +53,19 @@ const changePasswordFailure = function (error) {
   console.log('changePasswordFailure error is', error)
   // show failure message to user
 }
+
+const createSiteSuccess = function (data) {
+  store.site = data.site
+  console.log('createSiteSuccess data is', data)
+  console.log('store.site is', store.site)
+  views.dashboardView()
+  // show success message to user
+}
+
+const createSiteFailure = function (error) {
+  console.log('changeSiteFailure error is', error)
+  // show failure message to user
+}
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -61,5 +74,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  createSiteSuccess,
+  createSiteFailure
 }

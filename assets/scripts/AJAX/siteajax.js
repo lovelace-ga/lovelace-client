@@ -11,10 +11,7 @@ const getAllSites = function () {
 const getOneSite = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/sites/' + id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    method: 'GET'
   })
 }
 const createSite = function (data) {
@@ -24,13 +21,15 @@ const createSite = function (data) {
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: data // data will come from get form fields,
+    data: {
+      site: data
+    }// data will come from get form fields,
     // it will need to be in the same format we use in our curl request. the only value is 'name'
   })
 }
 const updateSite = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/sites/' + store.site.id,
+    url: config.apiOrigin + '/sites/' + store.site.id, // If broken try store.site._id
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
