@@ -1,5 +1,6 @@
 'use strict'
 const publicPostsTemplate = require('../templates/publicblog.handlebars')
+const publicPagesTemplate = require('../templates/pagenav.handlebars')
 const views = require('../JQviews')
 const store = require('../store')
 
@@ -7,6 +8,14 @@ const loadSiteSuccess = function (siteData) {
   $('.navbar-brand').text(siteData.site.name)
   store.site = siteData.site
   return siteData.site
+}
+const showPublicPages = function (data) {
+  console.log('data is', data)
+  const showPageList = publicPagesTemplate({ pages: data.pages })
+  $('#public-nav-list').html(showPageList)
+  views.publicView()
+  $('.read-less').hide()
+  return data
 }
 const showPublicPosts = function (data) {
   const blogArray = data.blog
@@ -24,5 +33,6 @@ const loadSiteFailure = function () {
 module.exports = {
   loadSiteSuccess,
   showPublicPosts,
-  loadSiteFailure
+  loadSiteFailure,
+  showPublicPages
 }

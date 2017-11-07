@@ -9,6 +9,7 @@ const ui = require('./ui')
 const loadSite = function (siteId) {
   siteAjax.getOneSite(siteId)
     .then(ui.loadSiteSuccess)
+    .then(ui.showPublicPages)
     .then(ui.showPublicPosts)
     .catch(ui.loadSiteFailure) // need error handling
 }
