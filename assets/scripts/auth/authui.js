@@ -4,10 +4,8 @@ const store = require('../store')
 
 const signUpSuccess = function (data) {
   console.log('signUpSuccess data is', data)
-  $('#sign-up-div').hide()
   $('#sign-up input:text').val(null)
   $('#sign-up input:password').val(null)
-  $('#sign-in-div').show()
 }
 
 const signUpFailure = function (error) {
