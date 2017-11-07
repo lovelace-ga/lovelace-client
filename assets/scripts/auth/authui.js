@@ -19,6 +19,8 @@ const signInSuccess = function (data) {
   $('#sign-in input:text').val(null)
   $('#sign-in input:password').val(null)
   store.user = data.user
+  views.dashboardView()
+  // show success message to user
 }
 
 const signInFailure = function (error) {
