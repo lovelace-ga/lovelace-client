@@ -5,19 +5,13 @@ const store = require('../store')
 const getAllSites = function () {
   return $.ajax({
     url: config.apiOrigin + '/sites',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    method: 'GET'
   })
 }
 const getOneSite = function (id) {
   return $.ajax({
     url: config.apiOrigin + '/sites/' + id,
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    method: 'GET'
   })
 }
 const createSite = function (data) {
