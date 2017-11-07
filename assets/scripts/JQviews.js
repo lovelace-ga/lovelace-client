@@ -12,6 +12,8 @@ const landingPageView = function () {
   $('#public-nav').hide()
   $('#dashboard-posts').hide()
   $('#sign-out-link').hide()
+  $('#change-password-div').hide()
+  $('#change-site-name-div').hide()
 }
 
 const dashboardView = function () {
@@ -26,6 +28,8 @@ const dashboardView = function () {
   $('#public-nav').hide()
   $('#dashboard-posts').hide()
   $('#sign-out-link').show()
+  $('#change-password-div').hide()
+  $('#change-site-name-div').hide()
 }
 
 const createView = function () {
@@ -39,6 +43,8 @@ const createView = function () {
   $('#create-view').show()
   $('#public-nav').hide()
   $('#dashboard-posts').hide()
+  $('#change-password-div').hide()
+  $('#change-site-name-div').hide()
 }
 
 const editView = function () {
@@ -52,6 +58,8 @@ const editView = function () {
   $('#create-view').hide()
   $('#public-nav').hide()
   $('#dashboard-posts').hide()
+  $('#change-password-div').hide()
+  $('#change-site-name-div').hide()
 }
 
 const publicView = function () {
@@ -66,6 +74,8 @@ const publicView = function () {
   $('#public-nav').show()
   $('#dashboard-posts').show()
   $('#sign-out-link').hide()
+  $('#change-password-div').hide()
+  $('#change-site-name-div').hide()
 }
 module.exports = {
   landingPageView,
