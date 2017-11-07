@@ -14,6 +14,7 @@ const landingPageView = function () {
   $('#sign-out-link').hide()
   $('#change-password-div').hide()
   $('#change-site-name-div').hide()
+  $('#navbar-header').text('Lovelace')
 }
 
 const dashboardView = function () {
@@ -62,6 +63,22 @@ const editView = function () {
   $('#change-site-name-div').hide()
 }
 
+const settingsView = function () {
+  $('#site-list').hide()
+  $('#sign-in-div').hide()
+  $('#sign-up-div').hide()
+  $('app-nav-bar').show()
+  $('#dash-nav').show()
+  $('#settingsView').show()
+  $('#dashboard-list').hide()
+  $('#edit-view').hide()
+  $('#create-view').hide()
+  $('#public-nav').hide()
+  $('#dashboard-posts').hide()
+  $('#change-password-div').hide()
+  $('#change-site-name-div').hide()
+}
+
 const publicView = function () {
   $('#site-list').hide()
   $('#sign-in-div').hide()
@@ -82,5 +99,6 @@ module.exports = {
   dashboardView,
   editView,
   createView,
-  publicView
+  publicView,
+  settingsView
 }
