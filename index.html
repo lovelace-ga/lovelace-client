@@ -24,7 +24,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div class="navbar-brand">Company Name</div>
+        <div id="navbar-header" class="navbar-brand"></div>
       </div>
       <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
@@ -36,34 +36,30 @@
   </nav>
   <!--End of Nav Bar-->
 <!---Landing Page-->
-      <div id="site-list" class="col-xs-10 col-md-9 sign-in-module">
-        <ul>
-          <li> Wordpress </li>
-        </ul>
-      </div>
+      <div id="site-list" class="col-xs-10 col-sm-8 col-md-8"></div>
 <!---End Landing Page-->
 
 
-      <!-- <div id="sign-up-div" class="col-xs-10 col-md-3 sign-in-module">
-            <form id="sign-up">
-              <fieldset>
-                <legend class="sign-in-header">Sign Up</legend>
-                <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email">
-                <br>
-                <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password">
-                <br>
-                <input class="form-control form-control-lg" type="password" name="credentials[password_confirmation]" placeholder="Enter Password Confirmation">
-                <br>
-                 <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
-                 <br>
-                <input type="submit" name="submit" value="Create Account and Sign In" class="btn btn-primary mb-1">
-                <br>
-                <a id="sign-in-link" class="link">Already have an account?</a>
-              </fieldset>
-            </form>
-          </div> -->
+  <div id="sign-up-div" class="col-xs-10 col-sm-4 col-md-4 sign-in-module">
+        <form id="sign-up">
+          <fieldset>
+            <legend class="sign-in-header">Sign Up</legend>
+            <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email">
+            <br>
+            <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password">
+            <br>
+            <input class="form-control form-control-lg" type="password" name="credentials[password_confirmation]" placeholder="Enter Password Confirmation">
+            <br>
+             <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
+             <br>
+            <input type="submit" name="submit" value="Create Account and Sign In" class="btn btn-primary mb-1">
+            <br>
+            <a id="sign-in-link" class="link">Already have an account?</a>
+          </fieldset>
+        </form>
+      </div>
 
-      <div id="sign-in-div" class="col-xs-10 col-md-2 sign-in-module">
+      <div id="sign-in-div" class="col-xs-10 col-sm-4 col-md-4 sign-in-module">
             <form id="sign-in">
               <fieldset>
           <legend class="sign-in-header .col-form-legend">Sign In</legend>
@@ -83,19 +79,19 @@
 <!--Left Nav Dashboard -->
 <div id='dash-nav' class="col-xs-10 col-sm-2 col-md-2">
 <ul class="nav nav-pills nav-stacked ">
-  <li><button id='new-post' role="presentation" type="button" class="btn btn-info">New Post</button></li>
-  <li><button id='new-page' role="presentation" type="button" class="btn btn-info">New Page</button></li>
+  <li><button role="presentation" type="button" class="btn btn-info">View Site</button></li>
   <br>
-  <li role="presentation" class="active"><a href="#">View Site</a></li>
-  <li role="presentation"><a href="#">Pages</a></li>
-  <li role="presentation"><a href="#">Posts</a></li>
-  <li role="presentation"><a href="#">Settings</a></li>
+  <li role="presentation" id="view-posts" class="active"><a>View Posts</a></li>
+  <li role="presentation" id='new-post'><a>Add Post</a>
+  <li role="presentation" id="view-pages"><a>View Pages</a></li>
+  <li role="presentation" id="new-page"><a>Add Page</a>
+  <li role="presentation" id="settings"><a>Settings</a></li>
 </ul>
 </div>
 <!---End of Nav Dashboard-->
 
 <!--List of Posts/Pages-->
-<!-- <div id="dashboard-list" class="col-xs-10 col-sml-10 col-md-10">
+<div id="dashboard-list" class="col-xs-10 col-sml-10 col-md-10">
   <h2>All Blog Posts</h2>
   <div class="list-group">
     <div class="list-group-item">
@@ -117,11 +113,11 @@
       <a>delete</a>
     </div>
   </div>
-</div> -->
+</div>
 <!--End list of Posts/Pages-->
 
-<!-- New Post/Page View -->
-<!-- <div id='create-view' class="col-xs-10 col-sml-10 col-md-10">
+<!-- New Post View-->
+<div id='create-post-view' class="col-xs-10 col-sml-10 col-md-10">
 <form>
   <div class="form-group">
     <label for="create-title">Title</label>
@@ -132,13 +128,30 @@
     <textarea class="form-control" name="post[content]" id="create-content" rows="20"></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Publish</button>
-  <button type="submit" class="btn btn-secondary">Cancel</button>
+  <button id="cancel-create-post" type="submit" class="btn btn-secondary">Cancel</button>
 </form>
-</div> -->
-<!-- End of New Post/Page View -->
+</div>
+<!-- End of New Post View -->
+
+<!-- New Page View-->
+<div id='create-page-view' class="col-xs-10 col-sml-10 col-md-10">
+<form>
+  <div class="form-group">
+    <label for="create-title">Title</label>
+    <input type="text" name="post[title]" class="form-control" id="create-title">
+  </div>
+  <div class="form-group">
+    <label for="create-content">Content</label>
+    <textarea class="form-control" name="post[content]" id="create-content" rows="20"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Publish</button>
+  <button id="cancel-create-page" type="submit" class="btn btn-secondary">Cancel</button>
+</form>
+</div>
+<!-- End of New Page View -->
 
 <!--Edit Post/Page View-->
-<!-- <div id='edit-view' class="col-xs-10 col-sml-10 col-md-10">
+<div id='edit-view' class="col-xs-10 col-sml-10 col-md-10">
 <form>
   <div class="form-group">
     <label for="edit-title">Title</label>
@@ -151,10 +164,11 @@
   <button type="submit" class="btn btn-primary">Publish</button>
   <button type="submit" class="btn btn-secondary">Cancel</button>
 </form>
-</div> -->
+</div>
 <!--End of Edit Post/Page View-->
 
 <!--Settings View -->
+<div id="settings-view">
 <div id="change-password-div" class="col-xs-10 col-sml-6 col-md-6 sign-in-module">
     <form id="change-password">
         <legend class="sign-in-header">Change Password</legend>
@@ -180,40 +194,24 @@
       <button type="submit" class="btn btn-primary">Update Site Name</button>
     </form>
 </div>
-
+</div>
 <!--End of Settings View-->
 
 
 <!--Left Nav Site Page-->
-<!-- <div id='public-nav' class="col-xs-10 col-sm-2 col-md-2">
+<div id='public-nav' class="col-xs-10 col-sm-2 col-md-2">
 <ul class="nav nav-pills nav-stacked">
   <li role="presentation"><a href="#">Blog</a></li>
   <li role="presentation"><a href="#">Page 1</a></li>
   <li role="presentation"><a href="#">Page 2</a></li>
 </ul>
-</div> -->
+</div>
 <!---End of Left Nav Site Page-->
 
 <!--List of Site's Posts-->
-<!-- <div id="dashboard-posts"class="col-xs-10 col-sml-10 col-md-10">
-  <div class="list-group">
-    <div class="list-group-item blog-post">
-      <h2 class="list-group-item-heading">My first blog</h2>
-      <p class="list-group-item-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit duis tristique sollicitudin. Eleifend donec pretium vulputate sapien nec. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Vivamus at augue eget arcu dictum varius. A diam sollicitudin tempor id eu.</p>
-      <a class="read-more-less">read more</a>
-    </div>
-    <div class="list-group-item blog-post">
-      <h2 class="list-group-item-heading">My first blog</h2>
-      <p class="list-group-item-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit duis tristique sollicitudin. Eleifend donec pretium vulputate sapien nec. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Vivamus at augue eget arcu dictum varius. A diam sollicitudin tempor id eu.</p>
-      <a class="read-more-less">read more</a>
-    </div>
-    <div class="list-group-item blog-post">
-      <h2 class="list-group-item-heading">My first blog</h2>
-      <p class="list-group-item-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Consectetur adipiscing elit duis tristique sollicitudin. Eleifend donec pretium vulputate sapien nec. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Vivamus at augue eget arcu dictum varius. A diam sollicitudin tempor id eu.</p>
-      <a class="read-more-less">read more</a>
-    </div>
-  </div>
-</div> -->>
+<div id="public-posts"class="col-xs-10 col-sml-10 col-md-10">
+  <div class="list-group"></div>
+</div>
 <!--End list of Sites Posts-->
 
     </body>

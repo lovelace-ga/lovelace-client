@@ -108,6 +108,17 @@ const updatePageFailure = function (data) {
   $('#update-page-content').text('Something went wrong. Could not update page.')
 }
 
+const changePasswordSuccess = function () {
+  console.log('Changed Password successfully!')
+  $('#change-password input').val(null)
+  // Show success message to user
+}
+
+const changePasswordFailure = function (error) {
+  console.log('changePasswordFailure error is', error)
+  // show failure message to user
+}
+
 module.exports = {
   publishPostSuccess,
   publishPostFailure,
@@ -132,5 +143,7 @@ module.exports = {
   editPageSuccess,
   editPageFailure,
   updatePageSuccess,
-  updatePageFailure
+  updatePageFailure,
+  changePasswordSuccess,
+  changePasswordFailure
 }
