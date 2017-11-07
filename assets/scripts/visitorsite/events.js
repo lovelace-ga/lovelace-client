@@ -1,29 +1,16 @@
 'use strict'
 const store = require('../store')
-const views = require('../JQviews')
+
 const siteAjax = require('../AJAX/siteajax')
 // const postAjax = require('../AJAX/postajax')
-const publicPostsTemplate = require('../templates/publicblog.handlebars')
+
+const ui = require('./ui')
 
 const loadSite = function (siteId) {
   siteAjax.getOneSite(siteId)
-    .then((siteData) => {
-      $('.navbar-brand').text(siteData.site.name)
-      store.site = siteData.site
-      return siteData.site
-    })
-    .then((data) => {
-      const blogArray = data.blog
-      blogArray.forEach((item) => {
-        item['content'] = item['content'].substring(0, 150) // trims the content before sending to handlebars
-      })
-      const showPostList = publicPostsTemplate({ posts: data.blog })
-      $('#public-posts').html(showPostList)
-      views.publicView()
-      $('.read-less').hide()
-    })
-
-    .catch(() => console.log('site data not returned')) // need error handling
+    .then(ui.loadSiteSuccess)
+    .then(ui.showPublicPosts)
+    .catch(ui.loadSiteFailure) // need error handling
 }
 
 const readMore = function (event) {
