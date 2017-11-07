@@ -157,6 +157,10 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
+// const onChangeSiteName = function (event) {
+//   console.log(siteData.site.name)
+// }
+
 const onViewSettings = function (event) {
   event.preventDefault()
   views.settingsView()

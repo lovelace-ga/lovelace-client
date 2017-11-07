@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('../store')
+
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./authajax')
 const ui = require('./authui')
@@ -13,12 +15,12 @@ const onSignUp = function (event) {
   console.log('siteData is', siteData)
   api.signUp(data)
     .then(ui.signUpSuccess)
-    .catch(ui.signUpFailure)
     .then(() => api.signIn(data))
     .then(ui.signInSuccess)
-    .catch(ui.signInFailure)
     .then(() => apiSite.createSite(siteData))
     .then(ui.createSiteSuccess)
+    .catch(ui.signUpFailure)
+    .catch(ui.signInFailure)
     .catch(ui.createSiteFailure)
 }
 
@@ -29,6 +31,21 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
+    .then(() => apiSite.getAllSites)
+    .then(ui.getSitesSuccess)
+    .catch(ui.getSitesFailure)
+    .then(() => {
+      const userId = store.user.id
+      const sitesArray = store.sites
+      // let siteId
+      sitesArray.forEach((site) => {
+        if (site._owner === userId) {
+          // siteId = site._ownerId
+          store.site = site
+        }
+        console.log('site id is', store.site)
+      })
+    })
 }
 
 const onSignOut = function (event) {
