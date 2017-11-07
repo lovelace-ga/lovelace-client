@@ -35,7 +35,7 @@ const createSite = function (data) {
 }
 const updateSite = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/sites/' + store.site.id,
+    url: config.apiOrigin + '/sites/' + store.site.id, // If broken try store.site._id
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
