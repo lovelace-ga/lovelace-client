@@ -13,6 +13,7 @@ const landingPageView = function () {
   $('#public-nav').hide()
   $('#public-posts').hide()
   $('#sign-out-link').hide()
+  $('#error-success-msg').text('')
   $('#settings-view').hide()
   $('#navbar-header').text('Lovelace')
 }
@@ -30,6 +31,7 @@ const dashboardView = function () {
   $('#public-nav').hide()
   $('#public-posts').hide()
   $('#sign-out-link').show()
+  $('#error-success-msg').text('')
   $('#settings-view').hide()
 }
 
@@ -44,6 +46,7 @@ const createPostView = function () {
   $('#create-post-view').show()
   $('#create-page-view').hide()
   $('#public-nav').hide()
+  $('#error-success-msg').text('')
   $('#public-posts').hide()
   $('#settings-view').hide()
 }
@@ -90,6 +93,7 @@ const settingsView = function () {
   $('#create-post-view').hide()
   $('#create-page-view').hide()
   $('#public-nav').hide()
+  $('#error-success-msg').text('')
   $('#public-posts').hide()
 }
 
@@ -106,6 +110,7 @@ const publicView = function () {
   $('#public-nav').show()
   $('#public-posts').show()
   $('#sign-out-link').hide()
+  $('#error-success-msg').text('')
   $('#settings-view').hide()
 }
 module.exports = {

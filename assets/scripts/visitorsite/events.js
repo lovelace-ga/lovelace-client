@@ -1,30 +1,53 @@
 'use strict'
-const views = require('../JQviews')
+const store = require('../store')
+
 const siteAjax = require('../AJAX/siteajax')
 // const postAjax = require('../AJAX/postajax')
-const publicPostsTemplate = require('../templates/publicblog.handlebars')
+
+const ui = require('./ui')
 
 const loadSite = function (siteId) {
   siteAjax.getOneSite(siteId)
+    .then(ui.loadSiteSuccess)
+    .then(ui.showPublicPosts)
+    .catch(ui.loadSiteFailure) // need error handling
+}
+
+const readMore = function (event) {
+  let newContent = ''
+  const postId = event.target.dataset.id
+  const siteId = store.site.id
+  siteAjax.getOneSite(siteId)
     .then((siteData) => {
-      console.log('siteData is', siteData)
-      $('.navbar-brand').text(siteData.site.name)
       return siteData.site
     })
     .then((data) => {
-      const showPostList = publicPostsTemplate({ posts: data.blog })
-      $('#public-posts').html(showPostList)
-      views.publicView()
+      const blogArray = data.blog
+      blogArray.forEach((post) => {
+        if (post.id === postId) { // finds post with id matching data-id from read more button
+          newContent = post.content
+        }
+      })
+      return newContent
     })
-    // .then(postAjax.index)
-    // .then((posts) => {
-    //   // run post handlebars
-    //   // run site handlebars
-    //   views.publicView()
-    // })
-    .catch(() => console.log('site data not returned'))
+    .then((newContent) => {
+      $(event.target).prev().text(newContent)
+      $(event.target).next().show() // shows 'read less' link
+      $(event.target).hide() // hides 'read more' link
+    })
 }
 
+const readLess = function (event) {
+  const newContent = $(event.target).prev().prev().text().substring(0, 150)
+  $(event.target).prev().prev().text(newContent)
+  $(event.target).prev().show() // shows 'read more' link
+  $(event.target).hide() // hides 'read less' link
+}
+const addHandlers = function () {
+  $(document).on('click', '.read-more', readMore)
+  $(document).on('click', '.read-less', readLess)
+}
 module.exports = {
-  loadSite
+  loadSite,
+  addHandlers
 }
