@@ -4,7 +4,7 @@ const store = require('../store')
 
 const index = function () {
   return $.ajax({
-    url: config.apiOrigin + '/posts',
+    url: config.apiOrigin + '/pages',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -13,7 +13,7 @@ const index = function () {
 }
 const show = function (id) {
   return $.ajax({
-    url: config.apiOrigin + '/posts/' + id,
+    url: config.apiOrigin + '/pages/' + id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -22,7 +22,7 @@ const show = function (id) {
 }
 const create = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/posts',
+    url: config.apiOrigin + '/pages',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -32,7 +32,7 @@ const create = function (data) {
 }
 const update = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/posts/' + data.post.id,
+    url: config.apiOrigin + '/pages/' + data.post.id, // this says post, and that's CORRECT -  because we're sharing the html with the post edit form. The name format of these fields is name="post[content]",  so this has to match.
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -42,7 +42,7 @@ const update = function (data) {
 }
 const destroy = function (id) {
   return $.ajax({
-    url: config.apiOrigin + '/posts/' + id,
+    url: config.apiOrigin + '/pages/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
