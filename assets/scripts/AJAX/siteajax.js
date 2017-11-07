@@ -32,10 +32,8 @@ const createSite = function (data) {
   })
 }
 const updateSite = function (data) {
-  // not sure if we're getting ID this way this time, we might need to change this.
-  const id = parseInt(data['site']['id'])
   return $.ajax({
-    url: config.apiOrigin + '/sites/' + id,
+    url: config.apiOrigin + '/sites/' + store.site.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
