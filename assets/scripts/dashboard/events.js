@@ -52,10 +52,15 @@ const onCancelNewPage = function (event) {
 }
 
 const onGetPosts = function () {
-  const site = store.site
-  console.log('clicked posts', site)
-  views.dashboardView()
-  ui.getPostsSuccess(site)
+  // event.preventDefault()
+  const siteID = store.site._id
+  console.log('site id is', store.site._id)
+  siteApi.getOneSite(siteID)
+    .then((site) => {
+      store.site = site.site
+      views.dashboardView()
+      ui.getPostsSuccess(site)
+    })
   // event.preventDefault()
   // views.dashboardView()
   // postApi.index()
@@ -75,10 +80,13 @@ const onViewPost = function (event) {
 
 const onDeletePost = function (event) {
   event.preventDefault()
-  console.log('is this running?')
   const postForDelete = event.target.dataset.id
   postApi.destroy(postForDelete)
-    .then(ui.deletePostSuccess)
+    .then(onGetPosts)
+    .then(() => {
+      console.log('is this running - after destroy to update success message.')
+      $('#error-success-msg').text('Post deleted successfully.')
+    })
     .catch(ui.deletePostFailure)
 }
 
@@ -108,17 +116,22 @@ const onCancelUpdatePost = function (event) {
 }
 
 const onGetPages = function (event) {
-  event.preventDefault()
-  const site = store.site
-  console.log('clicked pages', site)
-  views.dashboardView()
-  ui.getPagesSuccess(site)
+  const siteID = store.site._id
+  console.log('site id is', store.site._id)
+  siteApi.getOneSite(siteID)
+    .then((site) => {
+      store.site = site.site
+      console.log('site in store is', store.site)
+      views.dashboardView()
+      ui.getPagesSuccess(site.site)
+    })
 
   // event.preventDefault()
-  // views.dashboardView()
-  // pageApi.index()
-  //   .then(ui.getPagesSuccess) // Handlebars!
-  //   .catch(ui.getPagesFailure)
+  //
+  // const siteID = store.site.id
+  // console.log('clicked pages', siteID)
+  // siteApi.getOneSite(siteID)
+  //   .then(ui.getPagesSuccess)
 }
 
 // for if we decide to view page
@@ -137,7 +150,6 @@ const onDeletePage = function (event) {
     .then(ui.deletePageSuccess)
     .catch(ui.deletePageFailure)
 }
-
 // based on "edit" button in view posts list
 // comes with "Update" and "Cancel" buttons
 const onEditPage = function (event) {
@@ -218,7 +230,11 @@ const addHandlers = function () {
   $(document).on('click', '.delete-post', (event) => {
     $('#confirm-delete-post').attr('data-id', event.target.dataset.id)
   })
-  $('#confirm-delete-post').on('click', onDeletePost) // DOES NOT EXIST - <a>?
+  $('#confirm-delete-post').on('click', onDeletePost)
+  $(document).on('click', '.delete-page', (event) => {
+    $('#confirm-delete-page').attr('data-id', event.target.dataset.id)
+  })
+  $('#confirm-delete-page').on('click', onDeletePage)
   $('#edit-post').on('click', onEditPost) // DOES NOT EXIST (Handlebars) - will be <a>?
   $('#update-post').on('submit', onUpdatePost) // DOES NOT EXIST
   $('#cancel-update-post').on('click', onCancelUpdatePost) // DOES NOT EXIST

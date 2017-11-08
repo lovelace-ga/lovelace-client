@@ -34,12 +34,18 @@ const update = function (data) {
     data: data // data will come from get form fields we will need 'title' and 'content'
   })
 }
+
 const destroy = function (id) {
   return $.ajax({
-    url: config.apiOrigin + '/pages/' + id,
-    method: 'DELETE',
+    url: config.apiOrigin + '/deletepage',
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'site': {
+        'pageID': id
+      }
     }
   })
 }
