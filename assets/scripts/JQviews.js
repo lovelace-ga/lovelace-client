@@ -47,7 +47,7 @@ const dashboardView = function () {
   $('#public-posts').hide()
   $('#public-site-page').hide()
   $('#sign-out-link').show()
-  $('#error-success-msg').text('')
+  // $('#error-success-msg').text('')
   $('#settings-view').hide()
   $('#navbar-header').text(store.site.name)
   $('#create-site-view').hide()
@@ -95,6 +95,7 @@ const createPageView = function () {
   $('#edit-post-view').hide()
   $('#create-post-view').hide()
   $('#create-page-view').show()
+  $('#error-success-msg').text('')
   $('#public-nav').hide()
   $('#public-posts').hide()
   $('#settings-view').hide()
@@ -119,6 +120,7 @@ const editPostView = function () {
   $('#edit-post-view').show()
   $('#edit-page-view').hide()
   $('#create-post-view').hide()
+  $('#error-success-msg').text('')
   $('#create-page-view').hide()
   $('#public-nav').hide()
   $('#public-posts').hide()
@@ -150,6 +152,8 @@ const editPageView = function () {
   $('#create-post-view textarea').val(null)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
+  $('#error-success-msg').text('')
+
 }
 
 const settingsView = function () {
