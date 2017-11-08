@@ -44,8 +44,6 @@ const destroy = function (id) {
   })
 }
 module.exports = {
-  // index,
-  // show,
   create,
   update,
   destroy

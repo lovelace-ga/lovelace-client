@@ -5,6 +5,10 @@ const pagePostTemplate = require('../templates/page-post-dash.handlebars')
 
 const publishPostSuccess = function (data) {
   $('#new-post-msg').text('New post created successfully!')
+  console.log('publishPostSuccess data is', data)
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  views.dashboardView()
   // need to add message divs
   // show new post in "view" form?
 }
@@ -15,6 +19,10 @@ const publishPostFailure = function () {
 
 const publishPageSuccess = function (data) {
   $('#new-page-msg').text('New page created successfully!')
+  console.log('publishPageSuccess data is', data)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
+  views.dashboardView()
   // need to add message divs
   // show new page in "view" form?
 }
@@ -28,6 +36,11 @@ const getPostsSuccess = function (data) {
   const showList = pagePostTemplate({ ps: data.blog })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Blog Posts')
+  $('#new-page').removeClass()
+  $('#view-posts').addClass('active')
+  $('#view-pages').removeClass()
+  $('#new-post').removeClass()
+  $('#settings').removeClass()
 }
 
 const getPostsFailure = function () {
@@ -65,6 +78,11 @@ const getPagesSuccess = function (data) {
   const showList = pagePostTemplate({ ps: data.pages })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Site Pages')
+  $('#new-page').removeClass()
+  $('#view-pages').addClass('active')
+  $('#view-posts').removeClass()
+  $('#new-post').removeClass()
+  $('#settings').removeClass()
 }
 
 const getPagesFailure = function () {
