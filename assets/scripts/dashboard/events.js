@@ -3,7 +3,7 @@
 const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields')
 const pageApi = require('../AJAX/pagesajax.js') // UPDATE THIS (change file name)
-const postApi = require('../AJAX/postajax.js') // UPDATE THIS
+const postApi = require('../AJAX/postajax') // UPDATE THIS
 const authApi = require('../auth/authajax')
 const siteApi = require('../AJAX/siteajax')
 const ui = require('./ui')
@@ -16,6 +16,7 @@ const onNewPost = function (event) {
 
 const onPublishNewPost = function (event) {
   const data = getFormFields(event.target)
+  console.log('onPublishNewPost data is', data)
   event.preventDefault()
   postApi.create(data)
     .then(ui.publishPostSuccess)
@@ -36,6 +37,7 @@ const onNewPage = function (event) {
 
 const onPublishNewPage = function (event) {
   const data = getFormFields(event.target)
+  console.log('onPublishNewPost data is', data)
   event.preventDefault()
   pageApi.create(data)
     .then(ui.publishPageSuccess)
@@ -54,7 +56,6 @@ const onGetPosts = function (event) {
   console.log('clicked posts', site)
   views.dashboardView()
   ui.getPostsSuccess(site)
-
 
   // event.preventDefault()
   // views.dashboardView()
@@ -207,10 +208,10 @@ const onCreateSite = function (event) {
 }
 const addHandlers = function () {
   $('#new-post').on('click', onNewPost)
-  $('#publish-new-post').on('submit', onPublishNewPost)
+  $('#create-post').on('submit', onPublishNewPost)
   $('#cancel-create-post').on('click', onCancelNewPost)
   $('#new-page').on('click', onNewPage)
-  $('#publish-new-page').on('submit', onPublishNewPage) // DOES NOT EXIST YET
+  $('#create-page').on('submit', onPublishNewPage)
   $('#cancel-create-page').on('click', onCancelNewPage)
   $('#view-posts').on('click', onGetPosts)
   $('#view-post').on('submit', onViewPost) // DOES NOT EXIST

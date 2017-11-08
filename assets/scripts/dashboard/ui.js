@@ -5,6 +5,10 @@ const pagePostTemplate = require('../templates/page-post-dash.handlebars')
 
 const publishPostSuccess = function (data) {
   $('#new-post-msg').text('New post created successfully!')
+  console.log('publishPostSuccess data is', data)
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  views.dashboardView()
   // need to add message divs
   // show new post in "view" form?
 }
@@ -15,6 +19,10 @@ const publishPostFailure = function () {
 
 const publishPageSuccess = function (data) {
   $('#new-page-msg').text('New page created successfully!')
+  console.log('publishPageSuccess data is', data)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
+  views.dashboardView()
   // need to add message divs
   // show new page in "view" form?
 }
