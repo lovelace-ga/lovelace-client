@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const views = require('../JQviews')
 
 const siteAjax = require('../AJAX/siteajax')
 // const postAjax = require('../AJAX/postajax')
@@ -57,6 +58,15 @@ const getPageContent = function (event) {
   ui.showPageContent(pageData)
 }
 const addHandlers = function () {
+  $('#return-to-landing').on('click', () => {
+    views.landingPageView()
+    if (store.user) {
+      $('#return-to-dash').show()
+      $('#sign-out-link').show()
+    }
+  })
+  $('#return-to-dash').on('click', views.dashboardView)
+
   $(document).on('click', '.read-more', readMore)
   $(document).on('click', '.read-less', readLess)
   $(document).on('click', '.page-button', getPageContent)
