@@ -195,7 +195,7 @@ const onCreateSite = function (event) {
 }
 const addHandlers = function () {
   $('#new-post').on('click', onNewPost)
-  $('#publish-new-post').on('submit', onPublishNewPost) // DOES NOT EXIST YET
+  $('#publish-new-post').on('submit', onPublishNewPost)
   $('#cancel-create-post').on('click', onCancelNewPost)
   $('#new-page').on('click', onNewPage)
   $('#publish-new-page').on('submit', onPublishNewPage) // DOES NOT EXIST YET
