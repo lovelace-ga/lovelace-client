@@ -1,8 +1,8 @@
 'use strict'
 const store = require('../store')
 const views = require('../JQviews')
-const pagePostTemplate = require('../templates/page-post-dash.handlebars')
-
+const postListTemplate = require('../templates/post-dash.handlebars')
+const pageListTemplate = require('../templates/page-dash.handlebars')
 const publishPostSuccess = function (data) {
   $('#new-post-msg').text('New post created successfully!')
   console.log('publishPostSuccess data is', data)
@@ -32,9 +32,7 @@ const publishPageFailure = function () {
 }
 
 const getPostsSuccess = function (data) {
-  // insert template handlebars here
-  console.log('is post success running? sitedata is', data)
-  const showList = pagePostTemplate({ ps: data.site.blog })
+  const showList = postListTemplate({ ps: data.site.blog })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Blog Posts')
   $('#new-page').removeClass()
@@ -74,9 +72,9 @@ const updatePostFailure = function (data) {
   $('#update-post-content').text('Something went wrong. Could not update post.')
 }
 
-const getPagesSuccess = function (data) {
-  // insert handlebars here
-  const showList = pagePostTemplate({ ps: data.pages })
+const getPagesSuccess = function (site) {
+  console.log('pages is', site.pages)
+  const showList = pageListTemplate({ pages: site.pages })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Site Pages')
   $('#new-page').removeClass()
@@ -87,7 +85,7 @@ const getPagesSuccess = function (data) {
 }
 
 const getPagesFailure = function () {
-  $('#dash-list-header').text('something went wrong. Could not get pages.')
+  $('#error-success-msg').text('something went wrong. Could not get pages.')
 }
 
 const getPageSuccess = function (data) {
@@ -100,11 +98,11 @@ const getPageFailure = function () {
 }
 
 const deletePageSuccess = function (data) {
-  $('#delete-page-content').text('Page deleted successfully.')
+  $('#error-success-msg').text('Page deleted successfully.')
 }
 
 const deletePageFailure = function () {
-  $('#delete-page-content').text('Something went wrong. Page could not be deleted.')
+  $('#error-success-msg').text('Something went wrong. Page could not be deleted.')
 }
 
 const editPageSuccess = function (data) {

@@ -82,10 +82,11 @@ const onDeletePost = function (event) {
   event.preventDefault()
   const postForDelete = event.target.dataset.id
   postApi.destroy(postForDelete)
-    .then((data) => {
-      onGetPosts()
-      $('#error-success-msg').text('Post deleted successfully.')
-    })
+    .then(onGetPosts)
+    .then(() => {
+      console.log('is this running - after destroy to update success message.')
+     $('#error-success-msg').text('Post deleted successfully.')
+   })
     .catch(ui.deletePostFailure)
 }
 
@@ -115,12 +116,22 @@ const onCancelUpdatePost = function (event) {
 }
 
 const onGetPages = function (event) {
-  event.preventDefault()
-
-  const siteID = store.site.id
-  console.log('clicked pages', siteID)
+  const siteID = store.site._id
+  console.log('site id is', store.site._id)
   siteApi.getOneSite(siteID)
-    .then(ui.getPagesSuccess)
+    .then((site) => {
+      store.site = site.site
+      console.log('site in store is', store.site)
+      views.dashboardView()
+      ui.getPagesSuccess(site.site)
+    })
+
+  // event.preventDefault()
+  //
+  // const siteID = store.site.id
+  // console.log('clicked pages', siteID)
+  // siteApi.getOneSite(siteID)
+  //   .then(ui.getPagesSuccess)
 }
 
 // for if we decide to view page
@@ -139,7 +150,6 @@ const onDeletePage = function (event) {
     .then(ui.deletePageSuccess)
     .catch(ui.deletePageFailure)
 }
-
 // based on "edit" button in view posts list
 // comes with "Update" and "Cancel" buttons
 const onEditPage = function (event) {

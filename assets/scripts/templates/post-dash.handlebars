@@ -5,12 +5,12 @@
         <p class="date">Last Modified: {{p.updatedAt}}</p>
         <button data-id={{p.id}} type="button" class="btn btn-primary" class="edit">edit </button>
         <button data-id={{p.id}} type="button" class="delete-post btn btn-danger" data-toggle="modal" data-target="#delete-post-modal">
-          Delete Site
+          Delete Post
         </button>
       </div>
       <br>
     {{/each}}
 {{else}}
-<h4 class="list-group-item-heading">This site doesn't have any {{p}}s yet.</h4>
-<pclass="list-group-item-text> You can create one by clicking the buttons on the left</p>
+<h4 class="list-group-item-heading">This site doesn't have any blog posts yet.</h4>
+<p class="list-group-item-text" > You can create one by clicking the buttons on the left</p>
 {{/if}}

@@ -1,0 +1,16 @@
+{{#if pages}}
+    {{#each pages as |page|}}
+      <div class="list-group-item">
+        <h3 class="list-group-item-heading">{{page.title}}</h3>
+        <p class="date">Last Modified: {{page.updatedAt}}</p>
+        <button data-id={{page.id}} type="button" class="btn btn-primary" class="edit">edit </button>
+        <button data-id={{page.id}} type="button" class="delete-page btn btn-danger" data-toggle="modal" data-target="#delete-page-modal">
+          Delete Page
+        </button>
+      </div>
+      <br>
+    {{/each}}
+{{else}}
+<h4 class="list-group-item-heading">This site doesn't have any pages yet.</h4>
+<p class="list-group-item-text" > You can create one by clicking the buttons on the left</p>
+{{/if}}
