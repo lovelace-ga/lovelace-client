@@ -35,11 +35,11 @@ const getPostsFailure = function () {
 }
 
 const deletePostSuccess = function (data) {
-  $('#delete-post-content').text('Post deleted successfully.')
+  $('#error-success-msg').text('Post deleted successfully.')
 }
 
 const deletePostFailure = function () {
-  $('#delete-post-content').text('Something went wrong. Post could not be deleted.')
+  $('#error-success-msg').text('Something went wrong. Post could not be deleted.')
 }
 
 const editPostSuccess = function (data) {

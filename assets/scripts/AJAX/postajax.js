@@ -36,10 +36,15 @@ const update = function (data) {
 }
 const destroy = function (id) {
   return $.ajax({
-    url: config.apiOrigin + '/posts/' + id,
-    method: 'DELETE',
+    url: config.apiOrigin + '/deletepost',
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'site': {
+        'postID': id
+      }
     }
   })
 }
