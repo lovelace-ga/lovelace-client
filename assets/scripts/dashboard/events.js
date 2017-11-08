@@ -167,7 +167,6 @@ const onDeletePage = function (event) {
     })
     .catch(ui.deletePageFailure)
 
-
   // event.preventDefault()
   // const pageForDelete = $(this).parent.attr('data-id')
   // pageApi.destroy(pageForDelete)
