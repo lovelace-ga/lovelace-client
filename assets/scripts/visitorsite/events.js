@@ -63,6 +63,8 @@ const addHandlers = function () {
     if (store.user) {
       $('#return-to-dash').show()
       $('#sign-out-link').show()
+      $('#sign-in-div').hide()
+      $('#sign-up-div').hide()
     }
   })
   $('#return-to-dash').on('click', views.dashboardView)
