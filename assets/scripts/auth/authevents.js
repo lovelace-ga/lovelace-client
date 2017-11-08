@@ -39,12 +39,13 @@ const onSignIn = function (event) {
       // let siteId
       sitesArray.forEach((site) => {
         if (site._owner === userId) {
-          // siteId = site._ownerId
           store.site = site
+          views.dashboardView()
+        } else {
+          views.createSiteView()
         }
       })
     })
-    .then(() => views.dashboardView())
     .catch(ui.signInFailure)
     .catch(ui.getSitesFailure)
 }
