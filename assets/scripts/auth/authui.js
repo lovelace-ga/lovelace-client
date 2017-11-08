@@ -10,8 +10,8 @@ const signUpSuccess = function (data) {
   $('#sign-up input:password').val(null)
 }
 
-const signUpFailure = function (error) {
-  console.error('signUpFailure error is', error)
+const signUpFailure = function () {
+  $('#error-success-msg').text('Something went wrong. Please try again.')
   // show failure message to user
 }
 
@@ -24,8 +24,8 @@ const signInSuccess = function (data) {
   // show success message to user
 }
 
-const signInFailure = function (error) {
-  console.log('signInFailure error is', error)
+const signInFailure = function () {
+  $('#error-success-msg').text('Something went wrong. Please try again.')
   // show failure message to user
 }
 
