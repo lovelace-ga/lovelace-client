@@ -2,6 +2,7 @@
 
 const store = require('../store')
 const views = require('../JQviews')
+const dashEvents = require('../dashboard/events')
 
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./authajax')
@@ -39,7 +40,7 @@ const onSignIn = function (event) {
         if (store.user.id === site._owner) {
           store.site = site
           console.log('onSignIn store.site is', store.site)
-          views.dashboardView()
+          dashEvents.onGetPosts()
         }
       })
       if (!store.site) {

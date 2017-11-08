@@ -49,12 +49,11 @@ const onCancelNewPage = function (event) {
   views.dashboardView()
 }
 
-const onGetPosts = function (event) {
+const onGetPosts = function () {
   const site = store.site
   console.log('clicked posts', site)
   views.dashboardView()
   ui.getPostsSuccess(site)
-
 
   // event.preventDefault()
   // views.dashboardView()
