@@ -18,6 +18,7 @@ const landingPageView = function () {
   $('#error-success-msg').text('')
   $('#settings-view').hide()
   $('#navbar-header').text('Lovelace')
+  $('#create-site-view').hide()
 }
 
 const dashboardView = function () {
@@ -36,6 +37,7 @@ const dashboardView = function () {
   $('#error-success-msg').text('')
   $('#settings-view').hide()
   $('#navbar-header').text(store.site.name)
+  $('#create-site-view').hide()
 }
 
 const createPostView = function () {
@@ -52,6 +54,7 @@ const createPostView = function () {
   $('#error-success-msg').text('')
   $('#public-posts').hide()
   $('#settings-view').hide()
+  $('#create-site-view').hide()
 }
 
 const createPageView = function () {
@@ -67,6 +70,7 @@ const createPageView = function () {
   $('#public-nav').hide()
   $('#public-posts').hide()
   $('#settings-view').hide()
+  $('#create-site-view').hide()
 }
 
 const editView = function () {
@@ -82,6 +86,7 @@ const editView = function () {
   $('#public-nav').hide()
   $('#public-posts').hide()
   $('#settings-view').hide()
+  $('#create-site-view').hide()
 }
 
 const settingsView = function () {
@@ -99,6 +104,24 @@ const settingsView = function () {
   $('#public-nav').hide()
   $('#error-success-msg').text('')
   $('#public-posts').hide()
+  $('#create-site-view').hide()
+}
+
+const createSiteView = function () {
+  $('#site-list').hide()
+  $('#sign-in-div').hide()
+  $('#sign-up-div').hide()
+  $('app-nav-bar').show()
+  $('#dash-nav').hide()
+  $('#settings-view').hide()
+  $('#dashboard-list').hide()
+  $('#edit-view').hide()
+  $('#create-post-view').hide()
+  $('#create-page-view').hide()
+  $('#public-nav').hide()
+  $('#error-success-msg').text('')
+  $('#public-posts').hide()
+  $('#create-site-view').show()
 }
 
 const publicView = function () {
@@ -116,6 +139,7 @@ const publicView = function () {
   $('#sign-out-link').hide()
   $('#error-success-msg').text('')
   $('#settings-view').hide()
+  $('#create-site-view').hide()
 }
 module.exports = {
   landingPageView,
@@ -124,5 +148,6 @@ module.exports = {
   createPostView,
   createPageView,
   publicView,
-  settingsView
+  settingsView,
+  createSiteView
 }

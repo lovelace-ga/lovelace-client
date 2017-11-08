@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const views = require('../JQviews')
 
 const publishPostSuccess = function (data) {
   $('#new-post-msg').text('New post created successfully!')
@@ -121,12 +122,11 @@ const changePasswordFailure = function (error) {
 }
 
 const changeSiteNameSuccess = function (data) {
-  console.log('changeSiteNameSuccess data is', data)
   // Show success message to user
 }
 
 const changeSiteNameFailure = function (error) {
-  console.log('changeSiteNameFailure data is', error)
+  console.log('changeSiteNameFailure error is', error)
   // Show success message to user
 }
 
@@ -138,7 +138,32 @@ const getOneSiteSuccess = function (data) {
 }
 
 const getOneSiteFailure = function (error) {
-  console.log('changeSiteNameFailure data is', error)
+  console.log('getOneSiteFailure error is', error)
+  // Show success message to user
+}
+
+const destroySiteSuccess = function () {
+  store.site = {}
+  $('#navbar-header').text('')
+  // Show success message to user
+}
+
+const destroySiteFailure = function (error) {
+  console.log('destroySiteFailure error is', error)
+  // Show success message to user
+}
+
+const createSiteSuccess = function (data) {
+  store.site = data.site
+  console.log('createSiteSuccess store', store)
+  $('#navbar-header').text(store.site.name)
+  $('#create-site input:text').val(null)
+  views.dashboardView()
+  // Show success message to user
+}
+
+const createSiteFailure = function (error) {
+  console.log('createSiteFailure error is', error)
   // Show success message to user
 }
 
@@ -172,5 +197,9 @@ module.exports = {
   changeSiteNameSuccess,
   changeSiteNameFailure,
   getOneSiteSuccess,
-  getOneSiteFailure
+  getOneSiteFailure,
+  destroySiteSuccess,
+  destroySiteFailure,
+  createSiteSuccess,
+  createSiteFailure
 }

@@ -31,23 +31,23 @@ const onSignIn = function (event) {
   console.log('onSignIn data is', data)
   api.signIn(data)
     .then(ui.signInSuccess)
-    .catch(ui.signInFailure)
-    .then(() => apiSite.getAllSites)
+    .then(apiSite.getAllSites)
     .then(ui.getSitesSuccess)
-    .catch(ui.getSitesFailure)
     .then(() => {
       const userId = store.user.id
       const sitesArray = store.sites
       // let siteId
       sitesArray.forEach((site) => {
         if (site._owner === userId) {
-          // siteId = site._ownerId
           store.site = site
+          views.dashboardView()
+        } else {
+          views.createSiteView()
         }
-        console.log('onSignIn store.siteListTemplate', store.site)
       })
     })
-    .then(() => views.dashboardView())
+    .catch(ui.signInFailure)
+    .catch(ui.getSitesFailure)
 }
 
 const onSignOut = function (event) {

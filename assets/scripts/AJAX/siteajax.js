@@ -29,7 +29,7 @@ const createSite = function (data) {
 }
 const updateSite = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/sites/' + store.site.id, // If broken try store.site._id
+    url: config.apiOrigin + '/sites/' + store.site._id, // If broken try store.site._id
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -38,9 +38,20 @@ const updateSite = function (data) {
     // it will need to be in the same format we use in our curl request
   })
 }
+
+const destroySite = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/sites/' + store.site._id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 module.exports = {
   getAllSites,
   getOneSite,
   updateSite,
-  createSite
+  createSite,
+  destroySite
 }
