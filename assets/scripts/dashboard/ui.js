@@ -1,6 +1,7 @@
 'use strict'
 const store = require('../store')
 const views = require('../JQviews')
+const pagePostTemplate = require('../templates/page-post-dash.handlebars')
 
 const publishPostSuccess = function (data) {
   $('#new-post-msg').text('New post created successfully!')
@@ -24,20 +25,13 @@ const publishPageFailure = function () {
 
 const getPostsSuccess = function (data) {
   // insert template handlebars here
-  // $('#get-posts-content').html(handlebar template)
+  const showList = pagePostTemplate({ ps: data.blog })
+  $('#dash-list-container').html(showList)
+  $('#dash-list-header').text('All Blog Posts')
 }
 
 const getPostsFailure = function () {
-  $('#get-posts-content').text('Something went wrong. Could not retrieve posts.')
-}
-
-const getPostSuccess = function (data) {
-  // insert handlebars template here
-  // $('#get-post-content').html(handlebar template)
-}
-
-const getPostFailure = function () {
-  $('#get-post-content').text('Something went wrong. Could not retrieve post.')
+  $('#dash-list-header').text('Something went wrong. Could not retrieve posts.')
 }
 
 const deletePostSuccess = function (data) {
@@ -68,11 +62,13 @@ const updatePostFailure = function (data) {
 
 const getPagesSuccess = function (data) {
   // insert handlebars here
-  $('#get-pages-content').html()
+  const showList = pagePostTemplate({ ps: data.pages })
+  $('#dash-list-container').html(showList)
+  $('#dash-list-header').text('All Site Pages')
 }
 
 const getPagesFailure = function () {
-  $('#get-pages-content').text('something went wrong. Could not get pages.')
+  $('#dash-list-header').text('something went wrong. Could not get pages.')
 }
 
 const getPageSuccess = function (data) {
@@ -174,8 +170,6 @@ module.exports = {
   publishPageFailure,
   getPostsSuccess,
   getPostsFailure,
-  getPostSuccess,
-  getPostFailure,
   deletePostSuccess,
   deletePostFailure,
   editPostSuccess,
