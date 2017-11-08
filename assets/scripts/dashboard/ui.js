@@ -194,7 +194,7 @@ const createSiteFailure = function (error) {
 }
 
 const showSite = function () {
-  views.publicView()
+  publicEvents.loadSite(store.site._id)
 }
 module.exports = {
   publishPostSuccess,
