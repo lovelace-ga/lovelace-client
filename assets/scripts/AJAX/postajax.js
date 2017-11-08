@@ -2,18 +2,18 @@
 const config = require('../config')
 const store = require('../store')
 
-const index = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/posts',
-    method: 'GET'
-  })
-}
-const show = function (id) {
-  return $.ajax({
-    url: config.apiOrigin + '/posts/' + id,
-    method: 'GET'
-  })
-}
+// const index = function () {
+//   return $.ajax({
+//     url: config.apiOrigin + '/posts',
+//     method: 'GET'
+//   })
+// }
+// const show = function (id) {
+//   return $.ajax({
+//     url: config.apiOrigin + '/posts/' + id,
+//     method: 'GET'
+//   })
+// }
 const create = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/posts',
@@ -44,8 +44,8 @@ const destroy = function (id) {
   })
 }
 module.exports = {
-  index,
-  show,
+  // index,
+  // show,
   create,
   update,
   destroy
