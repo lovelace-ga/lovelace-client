@@ -31,10 +31,10 @@ const signInFailure = function (error) {
 
 const signOutSuccess = function () {
   console.log('Signed Out successfully!')
-  store.user = null
   store.site = null
   store.sites = null
-  console.log(store.user)
+  store.user = null
+  console.log('signOutSuccess store is', store)
   landingEvents.listAllSites()
   views.landingPageView()
   // Show success message to user

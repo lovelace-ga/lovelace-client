@@ -3,7 +3,7 @@ const store = require('../store')
 const views = require('../JQviews')
 const postListTemplate = require('../templates/post-dash.handlebars')
 const pageListTemplate = require('../templates/page-dash.handlebars')
-const publicEvents = require('../visitorsite/events')
+// const publicEvents = require('../visitorsite/events')
 
 const publishPostSuccess = function (data) {
   $('#new-post-msg').text('New post created successfully!')
@@ -58,8 +58,8 @@ const deletePostFailure = function () {
 
 const viewPostContent = function (viewPost) {
   views.editPostView()
-  $('#edit-post-view input').val(viewPost.title)
-  $('#edit-post-view textarea').val(viewPost.content)
+  $('#edit-post-title').val(viewPost.title)
+  $('#edit-post-content').val(viewPost.content)
 }
 const editPostSuccess = function (data) {
   // insert handlbars here
@@ -71,7 +71,6 @@ const editPostFailure = function () {
 }
 
 const updatePostSuccess = function (data) {
-  // show updated post in "view" form?
   $('#update-post-content').text('Post updated successfully!')
 }
 
@@ -114,8 +113,8 @@ const deletePageFailure = function () {
 
 const viewPageContent = function (viewPage) {
   views.editPageView()
-  $('#edit-page-view input').val(viewPage.title)
-  $('#edit-page-view textarea').val(viewPage.content)
+  $('#edit-page-title').val(viewPage.title)
+  $('#edit-page-content').val(viewPage.content)
 }
 
 const editPageSuccess = function (data) {
