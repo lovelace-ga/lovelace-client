@@ -33,7 +33,8 @@ const publishPageFailure = function () {
 
 const getPostsSuccess = function (data) {
   // insert template handlebars here
-  const showList = pagePostTemplate({ ps: data.blog })
+  console.log('is post success running? sitedata is', data)
+  const showList = pagePostTemplate({ ps: data.site.blog })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Blog Posts')
   $('#new-page').removeClass()

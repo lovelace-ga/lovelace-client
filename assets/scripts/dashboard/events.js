@@ -52,10 +52,15 @@ const onCancelNewPage = function (event) {
 }
 
 const onGetPosts = function () {
-  const site = store.site
-  console.log('clicked posts', site)
-  views.dashboardView()
-  ui.getPostsSuccess(site)
+  // event.preventDefault()
+  const siteID = store.site._id
+  console.log('site id is', store.site._id)
+  siteApi.getOneSite(siteID)
+    .then((site) => {
+      store.site = site.site
+      views.dashboardView()
+      ui.getPostsSuccess(site)
+    })
   // event.preventDefault()
   // views.dashboardView()
   // postApi.index()
@@ -75,10 +80,12 @@ const onViewPost = function (event) {
 
 const onDeletePost = function (event) {
   event.preventDefault()
-  console.log('is this running?')
   const postForDelete = event.target.dataset.id
   postApi.destroy(postForDelete)
-    .then(ui.deletePostSuccess)
+    .then((data) => {
+      onGetPosts()
+      $('#error-success-msg').text('Post deleted successfully.')
+    })
     .catch(ui.deletePostFailure)
 }
 
@@ -109,16 +116,11 @@ const onCancelUpdatePost = function (event) {
 
 const onGetPages = function (event) {
   event.preventDefault()
-  const site = store.site
-  console.log('clicked pages', site)
-  views.dashboardView()
-  ui.getPagesSuccess(site)
 
-  // event.preventDefault()
-  // views.dashboardView()
-  // pageApi.index()
-  //   .then(ui.getPagesSuccess) // Handlebars!
-  //   .catch(ui.getPagesFailure)
+  const siteID = store.site.id
+  console.log('clicked pages', siteID)
+  siteApi.getOneSite(siteID)
+    .then(ui.getPagesSuccess)
 }
 
 // for if we decide to view page
