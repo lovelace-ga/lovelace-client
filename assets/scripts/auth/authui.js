@@ -8,6 +8,7 @@ const signUpSuccess = function (data) {
   console.log('signUpSuccess data is', data)
   $('#sign-up input:text').val(null)
   $('#sign-up input:password').val(null)
+  $('#error-success-msg').text('')
 }
 
 const signUpFailure = function () {
@@ -20,6 +21,7 @@ const signInSuccess = function (data) {
   $('#sign-in input:text').val(null)
   $('#sign-in input:password').val(null)
   store.user = data.user
+  $('#error-success-msg').text('')
 
   // show success message to user
 }
@@ -51,6 +53,7 @@ const createSiteSuccess = function (data) {
   console.log('store.site is', store.site)
   views.dashboardView()
   $('#dash-list-container').html('<p>Click the buttons to the left to create your first blog post</p>')
+  $('#error-success-msg').text('')
 
   // show success message to user
 }
