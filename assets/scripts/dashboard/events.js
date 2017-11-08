@@ -168,11 +168,19 @@ const onChangeSiteName = function (event) {
     .then(() => siteApi.getOneSite(store.site.id))
     .then(ui.getOneSiteSuccess)
     .catch(ui.changeSiteNameFailure)
+    .catch(ui.getOneSiteFailure)
 }
 
 const onViewSettings = function (event) {
   event.preventDefault()
   views.settingsView()
+}
+
+const onDeleteSite = function (event) {
+  event.preventDefault()
+  siteApi.destroySite()
+    .then(ui.destroySiteSuccess)
+    .catch(ui.destroySiteFailure)
 }
 
 const addHandlers = function () {
@@ -198,6 +206,7 @@ const addHandlers = function () {
   $('#settings').on('click', onViewSettings)
   $('#change-password').on('submit', onChangePassword)
   $('#update-site-name').on('submit', onChangeSiteName)
+  $('#delete-site').on('click', onDeleteSite)
 }
 
 module.exports = {

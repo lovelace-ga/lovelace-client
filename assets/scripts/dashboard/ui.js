@@ -126,7 +126,7 @@ const changeSiteNameSuccess = function (data) {
 }
 
 const changeSiteNameFailure = function (error) {
-  console.log('changeSiteNameFailure data is', error)
+  console.log('changeSiteNameFailure error is', error)
   // Show success message to user
 }
 
@@ -138,7 +138,18 @@ const getOneSiteSuccess = function (data) {
 }
 
 const getOneSiteFailure = function (error) {
-  console.log('changeSiteNameFailure data is', error)
+  console.log('getOneSiteFailure error is', error)
+  // Show success message to user
+}
+
+const destroySiteSuccess = function () {
+  store.site = {}
+  $('#navbar-header').text('')
+  // Show success message to user
+}
+
+const destroySiteFailure = function (error) {
+  console.log('destroySiteFailure error is', error)
   // Show success message to user
 }
 
@@ -172,5 +183,7 @@ module.exports = {
   changeSiteNameSuccess,
   changeSiteNameFailure,
   getOneSiteSuccess,
-  getOneSiteFailure
+  getOneSiteFailure,
+  destroySiteSuccess,
+  destroySiteFailure
 }

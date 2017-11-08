@@ -171,10 +171,10 @@
 <!--End of Edit Post/Page View-->
 
 <!--Settings View -->
-<div id="settings-view">
-<div id="change-password-div" class="col-xs-10 col-sml-6 col-md-6 sign-in-module">
+<div id="settings-view" class="col-xs-10 col-sml-6 col-md-6">
+<div id="change-password-div" class="change-password">
     <form id="change-password">
-        <legend class="sign-in-header">Change Password</legend>
+        <legend>Change Password</legend>
       <div class="form-group">
         <label>Current Password</label>
         <input type="password" name="passwords[old]" class="form-control">
@@ -185,19 +185,49 @@
       </div>
       <button type="submit" class="btn btn-primary">Update Password</button>
     </form>
+    <hr>
 </div>
 
-<div id="change-site-name-div" class="col-xs-10 col-sml-6 col-md-6 sign-in-module">
+<div id="change-site-name-div" class="change-site-name">
     <form id="update-site-name">
-        <legend class="sign-in-header">Change Site Name</legend>
+        <legend>Change Site Name</legend>
       <div class="form-group">
         <label>Site Name</label>
         <input type="text" name="site[name]" class="form-control">
       </div>
       <button type="submit" class="btn btn-primary">Update Site Name</button>
     </form>
+    <hr>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-site-modal">
+  Delete Site
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-site-modal" tabindex="-1" role="dialog" aria-labelledby="deleteSiteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteSiteModalLabel">Are you sure you want to delete your site?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deleting your site will also delete all blog posts and pages.
+      </div>
+      <div class="modal-footer">
+        <button id="delete-site" type="button" class="btn btn-danger">Delete Site</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+      </div>
+    </div>
+  </div>
 </div>
 </div>
+
 <!--End of Settings View-->
 
 
