@@ -63,14 +63,20 @@ const onGetPosts = function () {
   //   .catch(ui.getPostsFailure)
 }
 
-// for if we decide to view post
 const onViewPost = function (event) {
-  event.preventDefault()
-  views.editView()
-  const selectedPost = $(this).parent.attr('data-id') // stored in handlebar
-  postApi.show(selectedPost)
-    .then(ui.getPostSuccess)
-    .catch(ui.getPostFailure)
+  const postId = event.target.dataset.id
+  console.log('onViewPost postId is', postId)
+  const blogArray = store.site.blog
+  console.log('onViewPost store.site.blog is', store.site.blog)
+  let viewPost = ''
+  blogArray.forEach((post) => {
+    if (postId === post._id) {
+      viewPost = post
+      console.log('onViewPost in forEach viewPost is', viewPost)
+      return viewPost
+    }
+  })
+  ui.viewPostContent(viewPost)
 }
 
 const onDeletePost = function (event) {
@@ -102,9 +108,7 @@ const onUpdatePost = function (event) {
 
 const onCancelUpdatePost = function (event) {
   event.preventDefault()
-  // back to main dashboard view
-  // clear out "Title" and "Content" fields with .text('')
-  // note: this will not update the post with cleared out values.
+  views.dashboardView()
 }
 
 const onGetPages = function (event) {
@@ -121,13 +125,20 @@ const onGetPages = function (event) {
   //   .catch(ui.getPagesFailure)
 }
 
-// for if we decide to view page
 const onViewPage = function (event) {
-  event.preventDefault()
-  const selectedPage = $(this).parent.attr('data-id') // stored in handlebar
-  pageApi.show(selectedPage)
-    .then(ui.getPageSuccess)
-    .catch(ui.getPageFailure)
+  const pageId = event.target.dataset.id
+  console.log('onViewPage pageId is', pageId)
+  const pagesArray = store.site.pages
+  console.log('onViewPage store.site.pages is', store.site.pages)
+  let viewPage = ''
+  pagesArray.forEach((page) => {
+    if (pageId === page._id) {
+      viewPage = page
+      console.log('onViewPage in forEach viewPage is', viewPage)
+      return viewPage
+    }
+  })
+  ui.viewPageContent(viewPage)
 }
 
 const onDeletePage = function (event) {
@@ -207,28 +218,31 @@ const onCreateSite = function (event) {
     .catch(ui.createSiteFailure)
 }
 const addHandlers = function () {
+  // New Post
   $('#new-post').on('click', onNewPost)
   $('#create-post').on('submit', onPublishNewPost)
   $('#cancel-create-post').on('click', onCancelNewPost)
+  // New Page
   $('#new-page').on('click', onNewPage)
   $('#create-page').on('submit', onPublishNewPage)
   $('#cancel-create-page').on('click', onCancelNewPage)
+  // View all posts
   $('#view-posts').on('click', onGetPosts)
-  $('#view-post').on('submit', onViewPost) // DOES NOT EXIST
+  $(document).on('click', '.edit-post', onViewPost)
+  $('#update-post').on('submit', onUpdatePost) // DOES NOT EXIST
+  $('#cancel-edit-post').on('click', onCancelUpdatePost)
   $(document).on('click', '.delete-post', (event) => {
     $('#confirm-delete-post').attr('data-id', event.target.dataset.id)
   })
   $('#confirm-delete-post').on('click', onDeletePost) // DOES NOT EXIST - <a>?
-  $('#edit-post').on('click', onEditPost) // DOES NOT EXIST (Handlebars) - will be <a>?
-  $('#update-post').on('submit', onUpdatePost) // DOES NOT EXIST
-  $('#cancel-update-post').on('click', onCancelUpdatePost) // DOES NOT EXIST
 
+  // View all pages
   $('#view-pages').on('click', onGetPages) // DOES NOT EXIST - what is "presentation role"?
-  $('#view-page').on('submit', onViewPage) // DOES NOT EXIST
-  $('#delete-page').on('submit', onDeletePage) // DOES NOT EXIST - <a>?
-  $('#edit-page').on('click', onEditPage) // DOES NOT EXIST
+  $(document).on('click', '.edit-page', onViewPage)
   $('#update-page').on('submit', onUpdatePage) // DOES NOT EXIST
-  $('#cancel-update-page').on('click', onCancelUpdatePage) // DOES NOT EXIST
+  $('#cancel-edit-page').on('click', onCancelUpdatePage) // DOES
+  $('#delete-page').on('submit', onDeletePage) // DOES NOT EXIST - <a>?
+  // Settings
   $('#settings').on('click', onViewSettings)
   $('#change-password').on('submit', onChangePassword)
   $('#update-site-name').on('submit', onChangeSiteName)

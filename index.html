@@ -162,9 +162,9 @@
 </div>
 <!-- End of New Page View -->
 
-<!--Edit Post/Page View-->
-<div id="edit-view" class="col-xs-10 col-sml-10 col-md-10">
-<form id="edit-page"> <!--Will need to have "edit-post" for edit post handlebars. Will have to reference this id when doing an update-->
+<!--Edit Post View-->
+<div id="edit-post-view" class="col-xs-10 col-sml-10 col-md-10">
+<form id="edit-post">
   <div class="form-group">
     <label for="edit-title">Title<span class="asterisk"> *</span></label>
     <input type="text" name="page[title]" class="form-control" required>
@@ -174,10 +174,27 @@
     <textarea class="form-control" name="page[content]" rows="20" required></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Publish</button>
-  <button id="cancel-edit" type="submit" class="btn btn-secondary">Cancel</button>
+  <button id="cancel-edit-post" type="submit" class="btn btn-secondary">Cancel</button>
 </form>
 </div>
-<!--End of Edit Post/Page View-->
+<!--End of Edit Post View-->
+
+<!--Edit Post View-->
+<div id="edit-page-view" class="col-xs-10 col-sml-10 col-md-10">
+<form id="edit-page">
+  <div class="form-group">
+    <label for="edit-title">Title<span class="asterisk"> *</span></label>
+    <input type="text" name="page[title]" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="create-page-content">Content<span class="asterisk"> *</span></label>
+    <textarea class="form-control" name="page[content]" rows="20" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Publish</button>
+  <button id="cancel-edit-page" type="submit" class="btn btn-secondary">Cancel</button>
+</form>
+</div>
+<!--End of Edit Post View-->
 
 <!--Settings View -->
 <div id="settings-view" class="col-xs-10 col-sml-6 col-md-6">
