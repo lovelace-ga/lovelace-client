@@ -45,6 +45,11 @@ const dashboardView = function () {
   $('#settings-view').hide()
   $('#navbar-header').text(store.site.name)
   $('#create-site-view').hide()
+  $('#new-page').removeClass()
+  $('#view-posts').addClass('active')
+  $('#view-pages').removeClass()
+  $('#new-post').removeClass()
+  $('#settings').removeClass()
 }
 
 const createPostView = function () {
@@ -63,6 +68,11 @@ const createPostView = function () {
   $('#public-posts').hide()
   $('#settings-view').hide()
   $('#create-site-view').hide()
+  $('#view-posts').removeClass()
+  $('#new-post').addClass('active')
+  $('#view-pages').removeClass()
+  $('#new-page').removeClass()
+  $('#settings').removeClass()
 }
 
 const createPageView = function () {
@@ -80,6 +90,11 @@ const createPageView = function () {
   $('#public-posts').hide()
   $('#settings-view').hide()
   $('#create-site-view').hide()
+  $('#view-posts').removeClass()
+  $('#new-page').addClass('active')
+  $('#view-pages').removeClass()
+  $('#new-post').removeClass()
+  $('#settings').removeClass()
 }
 
 const editView = function () {
@@ -116,6 +131,11 @@ const settingsView = function () {
   $('#error-success-msg').text('')
   $('#public-posts').hide()
   $('#create-site-view').hide()
+  $('#view-posts').removeClass()
+  $('#settings').addClass('active')
+  $('#view-pages').removeClass()
+  $('#new-post').removeClass()
+  $('#new-page').removeClass()
 }
 
 const createSiteView = function () {
