@@ -44,9 +44,25 @@ const readLess = function (event) {
   $(event.target).prev().show() // shows 'read more' link
   $(event.target).hide() // hides 'read less' link
 }
+const getPageContent = function (event) {
+  const pageId = event.target.dataset.id
+  console.log('event.target', event.target.dataset.id)
+  const pageArray = store.site.pages
+  let pageData = ''
+  pageArray.forEach((page) => {
+    if (page.id === pageId) { // finds page with id matching data-id from button
+      pageData = page
+    }
+  })
+  ui.showPageContent(pageData)
+}
 const addHandlers = function () {
   $(document).on('click', '.read-more', readMore)
   $(document).on('click', '.read-less', readLess)
+  $(document).on('click', '.page-button', getPageContent)
+  $(document).on('click', '#blog-button', () => {
+    loadSite(store.site.id)
+  })
 }
 module.exports = {
   loadSite,

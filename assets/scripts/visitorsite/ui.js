@@ -30,9 +30,15 @@ const showPublicPosts = function (data) {
 const loadSiteFailure = function () {
   $('#error-success-msg').text('sorry there was an error loading posts for this site.')
 }
+const showPageContent = function (pageData) {
+  $('#public-posts').hide()
+  $('#site-page-header').text(pageData.title)
+  $('#site-page-content').text(pageData.content)
+}
 module.exports = {
   loadSiteSuccess,
   showPublicPosts,
   loadSiteFailure,
-  showPublicPages
+  showPublicPages,
+  showPageContent
 }
