@@ -54,6 +54,11 @@ const deletePostFailure = function () {
   $('#error-success-msg').text('Something went wrong. Post could not be deleted.')
 }
 
+const viewPostContent = function (viewPost) {
+  views.editPostView()
+  $('#edit-post-view input').val(viewPost.title)
+  $('#edit-post-view textarea').val(viewPost.content)
+}
 const editPostSuccess = function (data) {
   // insert handlbars here
   $('#edit-post-content').html()
@@ -103,6 +108,12 @@ const deletePageSuccess = function (data) {
 
 const deletePageFailure = function () {
   $('#error-success-msg').text('Something went wrong. Page could not be deleted.')
+}
+
+const viewPageContent = function (viewPage) {
+  views.editPageView()
+  $('#edit-page-view input').val(viewPage.title)
+  $('#edit-page-view textarea').val(viewPage.content)
 }
 
 const editPageSuccess = function (data) {
@@ -189,6 +200,7 @@ module.exports = {
   getPostsFailure,
   deletePostSuccess,
   deletePostFailure,
+  viewPostContent,
   editPostSuccess,
   editPostFailure,
   updatePostSuccess,
@@ -199,6 +211,7 @@ module.exports = {
   getPageFailure,
   deletePageSuccess,
   deletePageFailure,
+  viewPageContent,
   editPageSuccess,
   editPageFailure,
   updatePageSuccess,
