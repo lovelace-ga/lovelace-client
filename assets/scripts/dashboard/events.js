@@ -20,6 +20,7 @@ const onPublishNewPost = function (event) {
   event.preventDefault()
   postApi.create(data)
     .then(ui.publishPostSuccess)
+    .then(onGetPosts)
     .catch(ui.publishPostFailure)
 }
 
@@ -41,6 +42,7 @@ const onPublishNewPage = function (event) {
   event.preventDefault()
   pageApi.create(data)
     .then(ui.publishPageSuccess)
+    .then(onGetPages)
     .catch(ui.publishPageFailure)
 }
 
@@ -145,10 +147,21 @@ const onViewPage = function (event) {
 
 const onDeletePage = function (event) {
   event.preventDefault()
-  const pageForDelete = $(this).parent.attr('data-id')
+  const pageForDelete = event.target.dataset.id
   pageApi.destroy(pageForDelete)
-    .then(ui.deletePageSuccess)
+    .then(onGetPages)
+    .then(() => {
+      console.log('is this running - after destroy to update success message.')
+      $('#error-success-msg').text('Page deleted successfully.')
+    })
     .catch(ui.deletePageFailure)
+
+
+  // event.preventDefault()
+  // const pageForDelete = $(this).parent.attr('data-id')
+  // pageApi.destroy(pageForDelete)
+  //   .then(ui.deletePageSuccess)
+  //   .catch(ui.deletePageFailure)
 }
 // based on "edit" button in view posts list
 // comes with "Update" and "Cancel" buttons
@@ -232,6 +245,7 @@ const addHandlers = function () {
   })
   $('#confirm-delete-post').on('click', onDeletePost)
   $(document).on('click', '.delete-page', (event) => {
+    console.log('setting the button id', event.target.dataset.id)
     $('#confirm-delete-page').attr('data-id', event.target.dataset.id)
   })
   $('#confirm-delete-page').on('click', onDeletePage)
@@ -241,7 +255,6 @@ const addHandlers = function () {
 
   $('#view-pages').on('click', onGetPages) // DOES NOT EXIST - what is "presentation role"?
   $('#view-page').on('submit', onViewPage) // DOES NOT EXIST
-  $('#delete-page').on('submit', onDeletePage) // DOES NOT EXIST - <a>?
   $('#edit-page').on('click', onEditPage) // DOES NOT EXIST
   $('#update-page').on('submit', onUpdatePage) // DOES NOT EXIST
   $('#cancel-update-page').on('click', onCancelUpdatePage) // DOES NOT EXIST
