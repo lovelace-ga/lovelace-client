@@ -29,7 +29,7 @@ const createSite = function (data) {
 }
 const updateSite = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/sites/' + store.site.id, // If broken try store.site._id
+    url: config.apiOrigin + '/sites/' + store.site._id, // If broken try store.site._id
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -41,7 +41,7 @@ const updateSite = function (data) {
 
 const destroySite = function () {
   return $.ajax({
-    url: config.apiOrigin + '/sites/' + store.site.id,
+    url: config.apiOrigin + '/sites/' + store.site._id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
