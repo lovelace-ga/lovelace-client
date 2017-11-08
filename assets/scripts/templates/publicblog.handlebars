@@ -1,0 +1,13 @@
+{{#if posts}}
+{{#each posts as |post|}}
+  <div class="list-group-item blog-post">
+    <h2 class="list-group-item-heading">{{post.title}}</h3>
+    <p class="list-group-item-text">{{post.content}}</p>
+    <a data-id={{post.id}} class="read-more">read more</a>
+    <a data-id={{post.id}} class="read-less">read less</a>
+  </div>
+  <br>
+{{/each}}
+{{else}}
+<h4>This site doesn't have any blog posts yet.</h4>
+{{/if}}

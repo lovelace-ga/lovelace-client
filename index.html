@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Lovelace</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,14 +12,241 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+
+      <!--Nav Bar-->
+          <nav id="app-nav-bar" class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button id='navbar-hamburger' type="button" class="navbar-toggle collapsed border" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div id="navbar-header" class="navbar-brand"></div>
+      </div>
+      <div  class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a id="sign-out-link" class = "nav-link">Sign Out</a></li>
+          <li><a id="return-to-landing" class = "nav-link">Lovelace Home</a></li>
+          <li><a id="return-to-dash" class = "nav-link">Your Dashboard</a></li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <!--End of Nav Bar-->
+  <!-- success/failure message -->
+  <h2 id='error-success-msg' class="list-group-item-heading" ></h2>
+  <!-- end success/failure message -->
+<!---Landing Page-->
+      <div id="site-list" class="col-xs-10 col-sm-8 col-md-8"></div>
+<!---End Landing Page-->
+
+
+  <div id="sign-up-div" class="col-xs-10 col-sm-4 col-md-4 sign-in-module">
+        <form id="sign-up">
+          <fieldset>
+            <legend class="sign-in-header">Sign Up</legend>
+            <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email">
+            <br>
+            <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password">
+            <br>
+            <input class="form-control form-control-lg" type="password" name="credentials[password_confirmation]" placeholder="Enter Password Confirmation">
+            <br>
+             <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
+             <br>
+            <input type="submit" name="submit" value="Create Account and Sign In" class="btn btn-primary mb-1">
+            <br>
+            <a id="sign-in-link" class="link">Already have an account?</a>
+          </fieldset>
+        </form>
+      </div>
+
+      <div id="sign-in-div" class="col-xs-10 col-sm-4 col-md-4 sign-in-module">
+            <form id="sign-in">
+              <fieldset>
+          <legend class="sign-in-header .col-form-legend">Sign In</legend>
+          <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email">
+          <br>
+          <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password">
+          <br>
+          <input type="submit" name="submit" value="Sign In" class="btn btn-primary mb-1">
+          <br>
+          <a id="sign-up-link" class="link">Create an account</a>
+        </fieldset>
+      </form>
+    </div>
+
+
+
+<!--Left Nav Dashboard -->
+<div id='dash-nav' class="col-xs-10 col-sm-2 col-md-2">
+<ul class="nav nav-pills nav-stacked ">
+  <li><button role="presentation" type="button" class="btn btn-info">View Site</button></li>
+  <br>
+  <li role="presentation" id="view-posts" class="active"><a>View Posts</a></li>
+  <li role="presentation" id='new-post'><a>Add Post</a>
+  <li role="presentation" id="view-pages"><a>View Pages</a></li>
+  <li role="presentation" id="new-page"><a>Add Page</a>
+  <li role="presentation" id="settings"><a>Settings</a></li>
+</ul>
+</div>
+<!---End of Nav Dashboard-->
+
+<!--List of Posts/Pages-->
+<div id="dashboard-list" class="col-xs-10 col-sml-10 col-md-10">
+  <h2 id="dash-list-header">All Blog Posts</h2>
+  <div id='dash-list-container' class="list-group">
+  </div>
+</div>
+<!--End list of Posts/Pages-->
+
+<!-- New Post View-->
+<div id='create-post-view' class="col-xs-10 col-sml-10 col-md-10">
+<form>
+  <div class="form-group">
+    <label for="create-title">Title</label>
+    <input type="text" name="post[title]" class="form-control" id="create-post-title">
+  </div>
+  <div class="form-group">
+    <label for="create-post-content">Content</label>
+    <textarea class="form-control" name="post[content]" id="create-post-content" rows="20"></textarea>
+  </div>
+  <button id="publish-new-post"type="submit" class="btn btn-primary">Publish</button>
+  <button id="cancel-create-post" type="submit" class="btn btn-secondary">Cancel</button>
+</form>
+</div>
+<!-- End of New Post View -->
+
+<!-- New Page View-->
+<div id='create-page-view' class="col-xs-10 col-sml-10 col-md-10">
+<form>
+  <div class="form-group">
+    <label for="create-title">Title</label>
+    <input type="text" name="post[title]" class="form-control" id="create-page-title">
+  </div>
+  <div class="form-group">
+    <label for="create-page-content">Content</label>
+    <textarea class="form-control" name="post[content]" id="create-page-content" rows="20"></textarea>
+  </div>
+  <button id="publish-new-page" type="submit" class="btn btn-primary">Publish</button>
+  <button id="cancel-create-page" type="submit" class="btn btn-secondary">Cancel</button>
+</form>
+</div>
+<!-- End of New Page View -->
+
+<!--Edit Post/Page View-->
+<div id='edit-view' class="col-xs-10 col-sml-10 col-md-10">
+<form>
+  <div class="form-group">
+    <label for="edit-title">Title</label>
+    <input type="text" name="post[title]"class="form-control" id="edit-title">
+  </div>
+  <div class="form-group">
+    <label for="edit-content">Content</label>
+    <textarea class="form-control" name="post[content]" id="edit-content" rows="20"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Publish</button>
+  <button type="submit" class="btn btn-secondary">Cancel</button>
+</form>
+</div>
+<!--End of Edit Post/Page View-->
+
+<!--Settings View -->
+<div id="settings-view" class="col-xs-10 col-sml-6 col-md-6">
+<div id="change-password-div" class="change-password">
+    <form id="change-password">
+        <legend>Change Password</legend>
+      <div class="form-group">
+        <label>Current Password</label>
+        <input type="password" name="passwords[old]" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>New Password</label>
+        <input type="password" name="passwords[new]" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Password</button>
+    </form>
+    <hr>
+</div>
+
+<div id="change-site-name-div" class="change-site-name">
+    <form id="update-site-name">
+        <legend>Change Site Name</legend>
+      <div class="form-group">
+        <label>Site Name</label>
+        <input type="text" name="site[name]" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Site Name</button>
+    </form>
+    <hr>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-site-modal">
+  Delete Site
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-site-modal" tabindex="-1" role="dialog" aria-labelledby="deleteSiteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteSiteModalLabel">Are you sure you want to delete your site?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Deleting your site will also delete all blog posts and pages.
+      </div>
+      <div class="modal-footer">
+        <button id="delete-site" type="button" class="btn btn-danger" data-dismiss="modal">Delete Site</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--End of Settings View-->
+
+<!-- Create Site View -->
+<div id="create-site-view" class="col-xs-10 col-md-6 create-new-site">
+          <form id="create-site">
+            <fieldset>
+              <legend class="sign-in-header .col-form-legend">Create a Site</legend>
+              <label>Site Name</label>
+              <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
+              <br>
+              <button type="submit" name="submit" class="btn btn-primary mb-1">Create Site</button>
+              <br>
+            </fieldset>
+          </form>
+        </div>
+<!--End of Create Site View-->
+
+<!--Left Nav Site Page-->
+<div id='public-nav' class="col-xs-10 col-sm-2 col-md-2">
+<ul id='public-nav-list' class="nav nav-pills nav-stacked">
+</ul>
+</div>
+<!---End of Left Nav Site Page-->
+
+<!--List of Site's Posts-->
+<div id="public-posts"class="col-xs-10 col-sml-10 col-md-10">
+  <div class="list-group"></div>
+</div>
+<!--End list of Sites Posts-->
+<!--Public Site Page Content-->
+<div id="public-site-page"class="col-xs-10 col-sml-10 col-md-10">
+  <h2 id='site-page-header' class="list-group-item-heading"></h2>
+  <br>
+  <p id='site-page-content' class="list-group-item-text"></p>
+</div>
+<!--End list of Sites Posts-->
     </body>
 </html>
