@@ -13,7 +13,8 @@ const landingPageView = function () {
   // $('#navbar-hamburger').hide()
   $('#dash-nav').hide()
   $('#dashboard-list').hide()
-  $('#edit-view').hide()
+  $('#edit-page-view').hide()
+  $('#edit-post-view').hide()
   $('#create-post-view').hide()
   $('#create-page-view').hide()
   $('#public-nav').hide()
@@ -34,7 +35,8 @@ const dashboardView = function () {
   $('#return-to-landing').show()
   $('#dash-nav').show()
   $('#dashboard-list').show()
-  $('#edit-view').hide()
+  $('#edit-page-view').hide()
+  $('#edit-post-view').hide()
   $('#create-post-view').hide()
   $('#create-page-view').hide()
   $('#public-nav').hide()
@@ -55,7 +57,8 @@ const createPostView = function () {
   $('#return-to-dash').hide()
   $('#dash-nav').show()
   $('#dashboard-list').hide()
-  $('#edit-view').hide()
+  $('#edit-page-view').hide()
+  $('#edit-post-view').hide()
   $('#create-post-view').show()
   $('#create-page-view').hide()
   $('#public-nav').hide()
@@ -78,7 +81,8 @@ const createPageView = function () {
   $('#return-to-dash').hide()
   $('#dash-nav').show()
   $('#dashboard-list').hide()
-  $('#edit-view').hide()
+  $('#edit-page-view').hide()
+  $('#edit-post-view').hide()
   $('#create-post-view').hide()
   $('#create-page-view').show()
   $('#public-nav').hide()
@@ -92,7 +96,7 @@ const createPageView = function () {
   $('#settings').removeClass()
 }
 
-const editView = function () {
+const editPostView = function () {
   $('#site-list').hide()
   $('#sign-in-div').hide()
   $('#sign-up-div').hide()
@@ -100,7 +104,26 @@ const editView = function () {
   $('#return-to-dash').hide()
   $('#dash-nav').show()
   $('#dashboard-list').hide()
-  $('#edit-view').show()
+  $('#edit-post-view').show()
+  $('#edit-page-view').hide()
+  $('#create-post-view').hide()
+  $('#create-page-view').hide()
+  $('#public-nav').hide()
+  $('#public-posts').hide()
+  $('#settings-view').hide()
+  $('#create-site-view').hide()
+}
+
+const editPageView = function () {
+  $('#site-list').hide()
+  $('#sign-in-div').hide()
+  $('#sign-up-div').hide()
+  $('#app-nav-bar').show()
+  $('#return-to-dash').hide()
+  $('#dash-nav').show()
+  $('#dashboard-list').hide()
+  $('#edit-page-view').show()
+  $('#edit-post-view').hide()
   $('#create-post-view').hide()
   $('#create-page-view').hide()
   $('#public-nav').hide()
@@ -119,7 +142,8 @@ const settingsView = function () {
   $('#settings-view').show()
   $('#update-site-name input:text').val(store.site.name)
   $('#dashboard-list').hide()
-  $('#edit-view').hide()
+  $('#edit-post-view').hide()
+  $('#edit-page-view').hide()
   $('#create-post-view').hide()
   $('#create-page-view').hide()
   $('#public-nav').hide()
@@ -141,7 +165,8 @@ const createSiteView = function () {
   $('#dash-nav').hide()
   $('#settings-view').hide()
   $('#dashboard-list').hide()
-  $('#edit-view').hide()
+  $('#edit-post-view').hide()
+  $('#edit-page-view').hide()
   $('#create-post-view').hide()
   $('#create-page-view').hide()
   $('#public-nav').hide()
@@ -159,7 +184,8 @@ const publicView = function () {
   $('#return-to-landing').show()
   $('#dash-nav').hide()
   $('#dashboard-list').hide()
-  $('#edit-view').hide()
+  $('#edit-post-view').hide()
+  $('#edit-page-view').hide()
   $('#create-post-view').hide()
   $('#create-page-view').hide()
   $('#public-nav').show()
@@ -174,7 +200,8 @@ const publicView = function () {
 module.exports = {
   landingPageView,
   dashboardView,
-  editView,
+  editPostView,
+  editPageView,
   createPostView,
   createPageView,
   publicView,
