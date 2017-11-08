@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const views = require('../JQviews')
 
 const publishPostSuccess = function (data) {
   $('#new-post-msg').text('New post created successfully!')
@@ -121,7 +122,6 @@ const changePasswordFailure = function (error) {
 }
 
 const changeSiteNameSuccess = function (data) {
-  console.log('changeSiteNameSuccess data is', data)
   // Show success message to user
 }
 
@@ -150,6 +150,20 @@ const destroySiteSuccess = function () {
 
 const destroySiteFailure = function (error) {
   console.log('destroySiteFailure error is', error)
+  // Show success message to user
+}
+
+const createSiteSuccess = function (data) {
+  store.site = data.site
+  console.log('createSiteSuccess store', store)
+  $('#navbar-header').text(store.site.name)
+  $('#create-site input:text').val(null)
+  views.dashboardView()
+  // Show success message to user
+}
+
+const createSiteFailure = function (error) {
+  console.log('createSiteFailure error is', error)
   // Show success message to user
 }
 
@@ -185,5 +199,7 @@ module.exports = {
   getOneSiteSuccess,
   getOneSiteFailure,
   destroySiteSuccess,
-  destroySiteFailure
+  destroySiteFailure,
+  createSiteSuccess,
+  createSiteFailure
 }

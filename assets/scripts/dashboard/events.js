@@ -163,9 +163,10 @@ const onChangeSiteName = function (event) {
   const data = getFormFields(event.target)
   console.log('onChangeSiteName data is', data)
   event.preventDefault()
+  console.log('onChangeSiteName store.site.id is', store.site._id)
   siteApi.updateSite(data)
     .then(ui.changeSiteNameSuccess)
-    .then(() => siteApi.getOneSite(store.site.id))
+    .then(() => siteApi.getOneSite(store.site._id))
     .then(ui.getOneSiteSuccess)
     .catch(ui.changeSiteNameFailure)
     .catch(ui.getOneSiteFailure)
@@ -180,9 +181,18 @@ const onDeleteSite = function (event) {
   event.preventDefault()
   siteApi.destroySite()
     .then(ui.destroySiteSuccess)
+    .then(() => views.createSiteView())
     .catch(ui.destroySiteFailure)
 }
 
+const onCreateSite = function (event) {
+  const data = getFormFields(event.target)
+  console.log('onCreateSite data is', data)
+  event.preventDefault()
+  siteApi.createSite(data.site)
+    .then(ui.createSiteSuccess)
+    .catch(ui.createSiteFailure)
+}
 const addHandlers = function () {
   $('#new-post').on('click', onNewPost)
   $('#publish-new-post').on('submit', onPublishNewPost) // DOES NOT EXIST YET
@@ -207,6 +217,7 @@ const addHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
   $('#update-site-name').on('submit', onChangeSiteName)
   $('#delete-site').on('click', onDeleteSite)
+  $('#create-site').on('submit', onCreateSite)
 }
 
 module.exports = {

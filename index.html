@@ -70,7 +70,7 @@
           <br>
           <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password">
           <br>
-          <input type="submit" name="submit" value="Sign In" class="btn btn-primary btn-lg mb-1">
+          <input type="submit" name="submit" value="Sign In" class="btn btn-primary mb-1">
           <br>
           <a id="sign-up-link" class="link">Create an account</a>
         </fieldset>
@@ -219,7 +219,7 @@
         Deleting your site will also delete all blog posts and pages.
       </div>
       <div class="modal-footer">
-        <button id="delete-site" type="button" class="btn btn-danger">Delete Site</button>
+        <button id="delete-site" type="button" class="btn btn-danger" data-dismiss="modal">Delete Site</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 
       </div>
@@ -230,6 +230,20 @@
 
 <!--End of Settings View-->
 
+<!-- Create Site View -->
+<div id="create-site-view" class="col-xs-10 col-md-6 create-new-site">
+          <form id="create-site">
+            <fieldset>
+              <legend class="sign-in-header .col-form-legend">Create a Site</legend>
+              <label>Site Name</label>
+              <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
+              <br>
+              <button type="submit" name="submit" class="btn btn-primary mb-1">Create Site</button>
+              <br>
+            </fieldset>
+          </form>
+        </div>
+<!--End of Create Site View-->
 
 <!--Left Nav Site Page-->
 <div id='public-nav' class="col-xs-10 col-sm-2 col-md-2">
