@@ -243,6 +243,7 @@ const onCreateSite = function (event) {
 }
 const addHandlers = function () {
   // New Post
+  $('#view-site').on('click', ui.showSite)
   $('#new-post').on('click', onNewPost)
   $('#create-post').on('submit', onPublishNewPost)
   $('#cancel-create-post').on('click', onCancelNewPost)
