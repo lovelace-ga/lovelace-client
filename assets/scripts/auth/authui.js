@@ -50,6 +50,8 @@ const createSiteSuccess = function (data) {
   console.log('createSiteSuccess data is', data)
   console.log('store.site is', store.site)
   views.dashboardView()
+  $('#dash-list-container').html('<p>Click the buttons to the left to create your first blog post</p>')
+
   // show success message to user
 }
 

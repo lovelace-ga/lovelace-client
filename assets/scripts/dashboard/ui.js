@@ -184,6 +184,7 @@ const createSiteSuccess = function (data) {
   $('#navbar-header').text(store.site.name)
   $('#create-site input:text').val(null)
   views.dashboardView()
+  $('#dash-list-container').html('<p>Click the buttons to the left to create your first blog post</p>')
   // Show success message to user
 }
 
