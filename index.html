@@ -18,7 +18,7 @@
           <nav id="app-nav-bar" class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed border" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button id='navbar-hamburger' type="button" class="navbar-toggle collapsed border" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -26,9 +26,11 @@
         </button>
         <div id="navbar-header" class="navbar-brand"></div>
       </div>
-      <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+      <div  class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a id="sign-out-link" class = "nav-link">Sign Out</a></li>
+          <li><a id="return-to-landing" class = "nav-link">Lovelace Home</a></li>
+          <li><a id="return-to-dash" class = "nav-link">Your Dashboard</a></li>
         </ul>
 
       </div>
@@ -36,7 +38,7 @@
   </nav>
   <!--End of Nav Bar-->
   <!-- success/failure message -->
-  <h2 id='error-success-msg'></h2>
+  <h2 id='error-success-msg' class="list-group-item-heading" ></h2>
   <!-- end success/failure message -->
 <!---Landing Page-->
       <div id="site-list" class="col-xs-10 col-sm-8 col-md-8"></div>
@@ -247,10 +249,7 @@
 
 <!--Left Nav Site Page-->
 <div id='public-nav' class="col-xs-10 col-sm-2 col-md-2">
-<ul class="nav nav-pills nav-stacked">
-  <li role="presentation"><a href="#">Blog</a></li>
-  <li role="presentation"><a href="#">Page 1</a></li>
-  <li role="presentation"><a href="#">Page 2</a></li>
+<ul id='public-nav-list' class="nav nav-pills nav-stacked">
 </ul>
 </div>
 <!---End of Left Nav Site Page-->
@@ -260,6 +259,12 @@
   <div class="list-group"></div>
 </div>
 <!--End list of Sites Posts-->
-
+<!--Public Site Page Content-->
+<div id="public-site-page"class="col-xs-10 col-sml-10 col-md-10">
+  <h2 id='site-page-header' class="list-group-item-heading"></h2>
+  <br>
+  <p id='site-page-content' class="list-group-item-text"></p>
+</div>
+<!--End list of Sites Posts-->
     </body>
 </html>
