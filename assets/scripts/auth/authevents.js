@@ -31,20 +31,20 @@ const onSignIn = function (event) {
   console.log('onSignIn data is', data)
   api.signIn(data)
     .then(ui.signInSuccess)
-    .then(apiSite.getAllSites)
-    .then(ui.getSitesSuccess)
     .then(() => {
-      const userId = store.user.id
+      console.log('onSignIn store.user.id', store.user.id)
       const sitesArray = store.sites
-      // let siteId
+      console.log('onSignIn store.sites is', store.sites)
       sitesArray.forEach((site) => {
-        if (site._owner === userId) {
+        if (store.user.id === site._owner) {
           store.site = site
+          console.log('onSignIn store.site is', store.site)
           views.dashboardView()
-        } else {
-          views.createSiteView()
         }
       })
+      if (!store.site) {
+        views.createSiteView()
+      }
     })
     .catch(ui.signInFailure)
     .catch(ui.getSitesFailure)

@@ -133,6 +133,7 @@ const createSiteView = function () {
   $('#error-success-msg').text('')
   $('#public-posts').hide()
   $('#create-site-view').show()
+  $('#navbar-header').text('')
 }
 
 const publicView = function () {
