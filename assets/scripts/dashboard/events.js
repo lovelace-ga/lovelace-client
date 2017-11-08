@@ -167,7 +167,6 @@ const onDeletePage = function (event) {
     })
     .catch(ui.deletePageFailure)
 
-
   // event.preventDefault()
   // const pageForDelete = $(this).parent.attr('data-id')
   // pageApi.destroy(pageForDelete)
@@ -244,6 +243,7 @@ const onCreateSite = function (event) {
 }
 const addHandlers = function () {
   // New Post
+  $('#view-site').on('click', ui.showSite)
   $('#new-post').on('click', onNewPost)
   $('#create-post').on('submit', onPublishNewPost)
   $('#cancel-create-post').on('click', onCancelNewPost)
