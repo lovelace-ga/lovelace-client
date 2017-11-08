@@ -1,0 +1,6 @@
+<li role="presentation"><a id='blog-button' href="#">Blog</a></li>
+{{#if pages}}
+{{#each pages as |page|}}
+<li class='page-button' role="presentation"><a href="#" data-id={{page.id}}>{{page.title}}</a></li>
+{{/each}}
+{{/if}}
