@@ -36,6 +36,11 @@ const getPostsSuccess = function (data) {
   const showList = pagePostTemplate({ ps: data.blog })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Blog Posts')
+  $('#new-page').removeClass()
+  $('#view-posts').addClass('active')
+  $('#view-pages').removeClass()
+  $('#new-post').removeClass()
+  $('#settings').removeClass()
 }
 
 const getPostsFailure = function () {
@@ -73,6 +78,11 @@ const getPagesSuccess = function (data) {
   const showList = pagePostTemplate({ ps: data.pages })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Site Pages')
+  $('#new-page').removeClass()
+  $('#view-pages').addClass('active')
+  $('#view-posts').removeClass()
+  $('#new-post').removeClass()
+  $('#settings').removeClass()
 }
 
 const getPagesFailure = function () {

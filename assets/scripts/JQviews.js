@@ -45,11 +45,6 @@ const dashboardView = function () {
   $('#settings-view').hide()
   $('#navbar-header').text(store.site.name)
   $('#create-site-view').hide()
-  $('#new-page').removeClass()
-  $('#view-posts').addClass('active')
-  $('#view-pages').removeClass()
-  $('#new-post').removeClass()
-  $('#settings').removeClass()
 }
 
 const createPostView = function () {

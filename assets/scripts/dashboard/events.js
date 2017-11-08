@@ -56,7 +56,6 @@ const onGetPosts = function (event) {
   console.log('clicked posts', site)
   views.dashboardView()
   ui.getPostsSuccess(site)
-
   // event.preventDefault()
   // views.dashboardView()
   // postApi.index()
