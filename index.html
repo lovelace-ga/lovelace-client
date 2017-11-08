@@ -189,34 +189,36 @@
 <form id="edit-post">
   <div class="form-group">
     <label for="edit-title">Title<span class="asterisk"> *</span></label>
-    <input type="text" name="page[title]" class="form-control" required>
+    <input id="edit-post-title" type="text" name="post[title]" class="form-control" required>
   </div>
   <div class="form-group">
-    <label for="create-page-content">Content<span class="asterisk"> *</span></label>
-    <textarea class="form-control" name="page[content]" rows="20" required></textarea>
+    <label for="create-post-content">Content<span class="asterisk"> *</span></label>
+    <textarea id="edit-post-content" class="form-control" name="post[content]" rows="20" required></textarea>
   </div>
+  <input type="hidden" id="post-id" name="post[_id]" value="">
   <button type="submit" class="btn btn-primary">Publish</button>
   <button id="cancel-edit-post" type="submit" class="btn btn-secondary">Cancel</button>
 </form>
 </div>
 <!--End of Edit Post View-->
 
-<!--Edit Post View-->
+<!--Edit Page View-->
 <div id="edit-page-view" class="col-xs-10 col-sml-10 col-md-10">
 <form id="edit-page">
   <div class="form-group">
     <label for="edit-title">Title<span class="asterisk"> *</span></label>
-    <input type="text" name="page[title]" class="form-control" required>
+    <input type="text" id="edit-page-title" name="page[title]" class="form-control" required>
   </div>
   <div class="form-group">
     <label for="create-page-content">Content<span class="asterisk"> *</span></label>
-    <textarea class="form-control" name="page[content]" rows="20" required></textarea>
+    <textarea id="edit-page-content" class="form-control" name="page[content]" rows="20" required></textarea>
   </div>
+  <input type="hidden" id="page-id" name="page[_id]">
   <button type="submit" class="btn btn-primary">Publish</button>
   <button id="cancel-edit-page" type="submit" class="btn btn-secondary">Cancel</button>
 </form>
 </div>
-<!--End of Edit Post View-->
+<!--End of Edit Page View-->
 
 <!--Settings View -->
 <div id="settings-view" class="col-xs-10 col-sml-6 col-md-6">

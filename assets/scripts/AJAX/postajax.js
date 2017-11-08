@@ -2,31 +2,20 @@
 const config = require('../config')
 const store = require('../store')
 
-// const index = function () {
-//   return $.ajax({
-//     url: config.apiOrigin + '/posts',
-//     method: 'GET'
-//   })
-// }
-// const show = function (id) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/posts/' + id,
-//     method: 'GET'
-//   })
-// }
 const create = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/posts',
+    url: config.apiOrigin + '/create-post',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: data // data will come from get form fields we will need 'title' and 'content'
+    data: data
   })
 }
+
 const update = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/posts/' + data.post.id,
+    url: config.apiOrigin + '/update-post',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

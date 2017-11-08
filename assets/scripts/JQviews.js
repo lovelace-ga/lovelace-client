@@ -24,6 +24,10 @@ const landingPageView = function () {
   $('#settings-view').hide()
   $('#navbar-header').text('Lovelace')
   $('#create-site-view').hide()
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
 }
 
 const dashboardView = function () {
@@ -47,6 +51,10 @@ const dashboardView = function () {
   $('#settings-view').hide()
   $('#navbar-header').text(store.site.name)
   $('#create-site-view').hide()
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
 }
 
 const createPostView = function () {
@@ -71,6 +79,8 @@ const createPostView = function () {
   $('#view-pages').removeClass()
   $('#new-page').removeClass()
   $('#settings').removeClass()
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
 }
 
 const createPageView = function () {
@@ -94,6 +104,8 @@ const createPageView = function () {
   $('#view-pages').removeClass()
   $('#new-post').removeClass()
   $('#settings').removeClass()
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
 }
 
 const editPostView = function () {
@@ -112,6 +124,10 @@ const editPostView = function () {
   $('#public-posts').hide()
   $('#settings-view').hide()
   $('#create-site-view').hide()
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
 }
 
 const editPageView = function () {
@@ -130,6 +146,10 @@ const editPageView = function () {
   $('#public-posts').hide()
   $('#settings-view').hide()
   $('#create-site-view').hide()
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
 }
 
 const settingsView = function () {
@@ -155,6 +175,10 @@ const settingsView = function () {
   $('#view-pages').removeClass()
   $('#new-post').removeClass()
   $('#new-page').removeClass()
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
 }
 
 const createSiteView = function () {
@@ -174,6 +198,10 @@ const createSiteView = function () {
   $('#public-posts').hide()
   $('#create-site-view').show()
   $('#navbar-header').text('')
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
 }
 
 const publicView = function () {
@@ -196,6 +224,10 @@ const publicView = function () {
   $('#error-success-msg').text('')
   $('#settings-view').hide()
   $('#create-site-view').hide()
+  $('#create-post-view input').val(null)
+  $('#create-post-view textarea').val(null)
+  $('#create-page-view input').val(null)
+  $('#create-page-view textarea').val(null)
 }
 module.exports = {
   landingPageView,
