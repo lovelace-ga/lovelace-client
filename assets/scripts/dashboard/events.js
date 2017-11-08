@@ -50,11 +50,17 @@ const onCancelNewPage = function (event) {
 }
 
 const onGetPosts = function (event) {
-  event.preventDefault()
+  const site = store.site
+  console.log('clicked posts', site)
   views.dashboardView()
-  postApi.index()
-    .then(ui.getPostsSuccess) // Handlebars!
-    .catch(ui.getPostsFailure)
+  ui.getPostsSuccess(site)
+
+
+  // event.preventDefault()
+  // views.dashboardView()
+  // postApi.index()
+  //   .then(ui.getPostsSuccess) // Handlebars!
+  //   .catch(ui.getPostsFailure)
 }
 
 // for if we decide to view post
@@ -102,10 +108,16 @@ const onCancelUpdatePost = function (event) {
 
 const onGetPages = function (event) {
   event.preventDefault()
+  const site = store.site
+  console.log('clicked pages', site)
   views.dashboardView()
-  pageApi.index()
-    .then(ui.getPagesSuccess) // Handlebars!
-    .catch(ui.getPagesFailure)
+  ui.getPagesSuccess(site)
+
+  // event.preventDefault()
+  // views.dashboardView()
+  // pageApi.index()
+  //   .then(ui.getPagesSuccess) // Handlebars!
+  //   .catch(ui.getPagesFailure)
 }
 
 // for if we decide to view page
@@ -221,5 +233,6 @@ const addHandlers = function () {
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onGetPosts
 }
