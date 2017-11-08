@@ -51,7 +51,7 @@ const onCancelNewPage = function (event) {
   views.dashboardView()
 }
 
-const onGetPosts = function (event) {
+const onGetPosts = function () {
   const site = store.site
   console.log('clicked posts', site)
   views.dashboardView()
@@ -75,7 +75,8 @@ const onViewPost = function (event) {
 
 const onDeletePost = function (event) {
   event.preventDefault()
-  const postForDelete = $(this).parent.attr('data-id')
+  console.log('is this running?')
+  const postForDelete = event.target.dataset.id
   postApi.destroy(postForDelete)
     .then(ui.deletePostSuccess)
     .catch(ui.deletePostFailure)
@@ -214,7 +215,10 @@ const addHandlers = function () {
   $('#cancel-create-page').on('click', onCancelNewPage)
   $('#view-posts').on('click', onGetPosts)
   $('#view-post').on('submit', onViewPost) // DOES NOT EXIST
-  $('#delete-post').on('submit', onDeletePost) // DOES NOT EXIST - <a>?
+  $(document).on('click', '.delete-post', (event) => {
+    $('#confirm-delete-post').attr('data-id', event.target.dataset.id)
+  })
+  $('#confirm-delete-post').on('click', onDeletePost) // DOES NOT EXIST - <a>?
   $('#edit-post').on('click', onEditPost) // DOES NOT EXIST (Handlebars) - will be <a>?
   $('#update-post').on('submit', onUpdatePost) // DOES NOT EXIST
   $('#cancel-update-post').on('click', onCancelUpdatePost) // DOES NOT EXIST
