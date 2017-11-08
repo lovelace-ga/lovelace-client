@@ -153,7 +153,6 @@ const editPageView = function () {
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
   $('#error-success-msg').text('')
-
 }
 
 const settingsView = function () {

@@ -119,7 +119,6 @@ const onGetPages = function (event) {
   siteApi.getOneSite(siteID)
     .then((site) => {
       store.site = site.site
-      console.log('site in store is', store.site)
       views.dashboardView()
       ui.getPagesSuccess(site.site)
     })

@@ -3,7 +3,7 @@ const store = require('../store')
 const views = require('../JQviews')
 const postListTemplate = require('../templates/post-dash.handlebars')
 const pageListTemplate = require('../templates/page-dash.handlebars')
-// const publicEvents = require('../visitorsite/events')
+const publicEvents = require('../visitorsite/events')
 
 const publishPostSuccess = function (data) {
   $('#error-success-msg').text('New post created successfully!')
@@ -192,6 +192,7 @@ const createSiteFailure = function () {
 }
 
 const showSite = function () {
+  $('#return-to-dash').show()
   publicEvents.loadSite(store.site._id)
 }
 module.exports = {
