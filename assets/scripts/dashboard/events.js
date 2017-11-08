@@ -43,6 +43,9 @@ const onPublishNewPage = function (event) {
   pageApi.create(data)
     .then(ui.publishPageSuccess)
     .then(onGetPages)
+    .then(() => {
+      $('#error-success-msg').text('Your Page Was Created Successfully')
+    })
     .catch(ui.publishPageFailure)
 }
 
@@ -116,7 +119,6 @@ const onGetPages = function (event) {
   siteApi.getOneSite(siteID)
     .then((site) => {
       store.site = site.site
-      console.log('site in store is', store.site)
       views.dashboardView()
       ui.getPagesSuccess(site.site)
     })
@@ -139,7 +141,6 @@ const onViewPage = function (event) {
   pagesArray.forEach((page) => {
     if (pageId === page._id) {
       viewPage = page
-      console.log('onViewPage in forEach viewPage is', viewPage)
       return viewPage
     }
   })
@@ -167,7 +168,6 @@ const onDeletePage = function (event) {
   pageApi.destroy(pageForDelete)
     .then(onGetPages)
     .then(() => {
-      console.log('is this running - after destroy to update success message.')
       $('#error-success-msg').text('Page deleted successfully.')
     })
     .catch(ui.deletePageFailure)

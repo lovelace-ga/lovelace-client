@@ -30,7 +30,7 @@ const signInFailure = function (error) {
 }
 
 const signOutSuccess = function () {
-  console.log('Signed Out successfully!')
+  $('#error-success-msg').text('Logged Out Successfully')
   store.site = null
   store.sites = null
   store.user = null
@@ -40,8 +40,8 @@ const signOutSuccess = function () {
   // Show success message to user
 }
 
-const signOutFailure = function (error) {
-  console.log('signOutFailure error is', error)
+const signOutFailure = function () {
+  $('#error-success-msg').text('There was an error signing out. Please try again.')
   // Show failure message to user
 }
 
@@ -50,11 +50,13 @@ const createSiteSuccess = function (data) {
   console.log('createSiteSuccess data is', data)
   console.log('store.site is', store.site)
   views.dashboardView()
+  $('#dash-list-container').html('<p>Click the buttons to the left to create your first blog post</p>')
+
   // show success message to user
 }
 
-const createSiteFailure = function (error) {
-  console.log('changeSiteFailure error is', error)
+const createSiteFailure = function () {
+  $('#error-success-msg').text('There was an error creating your site.')
   // show failure message to user
 }
 module.exports = {

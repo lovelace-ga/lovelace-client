@@ -3,10 +3,10 @@ const store = require('../store')
 const views = require('../JQviews')
 const postListTemplate = require('../templates/post-dash.handlebars')
 const pageListTemplate = require('../templates/page-dash.handlebars')
-// const publicEvents = require('../visitorsite/events')
+const publicEvents = require('../visitorsite/events')
 
 const publishPostSuccess = function (data) {
-  $('#new-post-msg').text('New post created successfully!')
+  $('#error-success-msg').text('New post created successfully!')
   console.log('publishPostSuccess data is', data)
   $('#create-post-view input').val(null)
   $('#create-post-view textarea').val(null)
@@ -16,11 +16,11 @@ const publishPostSuccess = function (data) {
 }
 
 const publishPostFailure = function () {
-  $('#new-post-msg').text('Something went wrong. New post could not be created.')
+  $('#error-success-msg').text('Something went wrong. New post could not be created.')
 }
 
 const publishPageSuccess = function (data) {
-  $('#new-page-msg').text('New page created successfully!')
+  $('#error-success-msg').text('New page created successfully!')
   console.log('publishPageSuccess data is', data)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
@@ -30,7 +30,7 @@ const publishPageSuccess = function (data) {
 }
 
 const publishPageFailure = function () {
-  $('#new-page-msg').text('Something went wrong. New page could not be created.')
+  $('#error-success-msg').text('Something went wrong. New page could not be created.')
 }
 
 const getPostsSuccess = function (data) {
@@ -45,7 +45,7 @@ const getPostsSuccess = function (data) {
 }
 
 const getPostsFailure = function () {
-  $('#dash-list-header').text('Something went wrong. Could not retrieve posts.')
+  $('#error-success-msg').text('Something went wrong. Could not retrieve posts.')
 }
 
 const deletePostSuccess = function (data) {
@@ -63,19 +63,20 @@ const viewPostContent = function (viewPost) {
 }
 const editPostSuccess = function (data) {
   // insert handlbars here
-  $('#edit-post-content').html()
+  $('#error-success-msg').text('Your Page Was Created Successfully')
 }
 
 const editPostFailure = function () {
-  $('#edit-post-content').text('Something went wrong. Cannot retrieve post for edit.')
+  $('#error-success-msg').text('Something went wrong. Cannot retrieve post for edit.')
 }
 
 const updatePostSuccess = function (data) {
-  $('#update-post-content').text('Post updated successfully!')
+  // show updated post in "view" form?
+  $('#error-success-msg').text('Post updated successfully!')
 }
 
 const updatePostFailure = function (data) {
-  $('#update-post-content').text('Something went wrong. Could not update post.')
+  $('#error-success-msg').text('Something went wrong. Could not update post.')
 }
 
 const getPagesSuccess = function (site) {
@@ -94,13 +95,8 @@ const getPagesFailure = function () {
   $('#error-success-msg').text('something went wrong. Could not get pages.')
 }
 
-const getPageSuccess = function (data) {
-  // insert handlbars here
-  $('#get-page-content').html()
-}
-
 const getPageFailure = function () {
-  $('#get-page-content').text('something went wrong. Could not get page.')
+  $('#error-success-msg').text('something went wrong. Could not get page.')
 }
 
 const deletePageSuccess = function (data) {
@@ -119,39 +115,40 @@ const viewPageContent = function (viewPage) {
 
 const editPageSuccess = function (data) {
   // insert handlbars here
-  $('#edit-page-content').html()
+  $('#error-success-msg').text('Page edited successfully')
 }
 
 const editPageFailure = function () {
-  $('#edit-page-content').text('Something went wrong. Cannot retrieve page for edit.')
+  $('#error-success-msg').text('Something went wrong. Cannot retrieve page for edit.')
 }
 
 const updatePageSuccess = function (data) {
   // show updated post in "view" form?
-  $('#update-page-content').text('Page updated successfully!')
+  $('#error-success-msg').text('Page updated successfully!')
 }
 
 const updatePageFailure = function (data) {
-  $('#update-page-content').text('Something went wrong. Could not update page.')
+  $('#error-success-msg').text('Something went wrong. Could not update page.')
 }
 
 const changePasswordSuccess = function () {
-  console.log('Changed Password successfully!')
+  $('#error-success-msg').text('Password updated successfully!')
   $('#change-password input').val(null)
   // Show success message to user
 }
 
-const changePasswordFailure = function (error) {
-  console.log('changePasswordFailure error is', error)
+const changePasswordFailure = function () {
+  $('#error-success-msg').text('Failed to update password, please try again.')
   // show failure message to user
 }
 
 const changeSiteNameSuccess = function (data) {
+  $('#error-success-msg').text('Name Changed Successfully')
   // Show success message to user
 }
 
-const changeSiteNameFailure = function (error) {
-  console.log('changeSiteNameFailure error is', error)
+const changeSiteNameFailure = function () {
+  $('#error-success-msg').text('Error on Name Change, please try again.')
   // Show success message to user
 }
 
@@ -170,11 +167,12 @@ const getOneSiteFailure = function (error) {
 const destroySiteSuccess = function () {
   store.site = {}
   $('#navbar-header').text('')
+  $('#error-success-msg').text('Successfully deleted your site')
   // Show success message to user
 }
 
-const destroySiteFailure = function (error) {
-  console.log('destroySiteFailure error is', error)
+const destroySiteFailure = function () {
+  $('#error-success-msg').text('Failed to delete your site. Please try again.')
   // Show success message to user
 }
 
@@ -184,15 +182,17 @@ const createSiteSuccess = function (data) {
   $('#navbar-header').text(store.site.name)
   $('#create-site input:text').val(null)
   views.dashboardView()
+  $('#dash-list-container').html('<p>Click the buttons to the left to create your first blog post</p>')
   // Show success message to user
 }
 
-const createSiteFailure = function (error) {
-  console.log('createSiteFailure error is', error)
+const createSiteFailure = function () {
+  $('#error-success-msg').text('Failed to create a site, please try again.')
   // Show success message to user
 }
 
 const showSite = function () {
+  $('#return-to-dash').show()
   publicEvents.loadSite(store.site._id)
 }
 module.exports = {
@@ -211,7 +211,6 @@ module.exports = {
   updatePostFailure,
   getPagesSuccess,
   getPagesFailure,
-  getPageSuccess,
   getPageFailure,
   deletePageSuccess,
   deletePageFailure,
