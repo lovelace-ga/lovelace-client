@@ -1,9 +1,14 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+$app-red: #da568a;
 
 a {
   cursor: pointer;
+}
+
+.asterisk {
+  color: $app-red;
 }
 
 .change-site-name {

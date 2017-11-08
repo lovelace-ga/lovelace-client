@@ -49,13 +49,13 @@
         <form id="sign-up">
           <fieldset>
             <legend class="sign-in-header">Sign Up</legend>
-            <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email">
+            <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email" required>
             <br>
-            <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password">
+            <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password" required>
             <br>
             <input class="form-control form-control-lg" type="password" name="credentials[password_confirmation]" placeholder="Enter Password Confirmation">
             <br>
-             <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
+             <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name" required>
              <br>
             <input type="submit" name="submit" value="Create Account and Sign In" class="btn btn-primary mb-1">
             <br>
@@ -68,9 +68,9 @@
             <form id="sign-in">
               <fieldset>
           <legend class="sign-in-header .col-form-legend">Sign In</legend>
-          <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email">
+          <input class="form-control form-control-lg" type="text" name="credentials[email]" placeholder="Enter Email" required>
           <br>
-          <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password">
+          <input class="form-control form-control-lg" type="password" name="credentials[password]" placeholder="Enter Password" required>
           <br>
           <input type="submit" name="submit" value="Sign In" class="btn btn-primary mb-1">
           <br>
@@ -87,7 +87,7 @@
   <li><button role="presentation" type="button" class="btn btn-info">View Site</button></li>
   <br>
   <li role="presentation" id="view-posts" class="active"><a>View Posts</a></li>
-  <li role="presentation" id='new-post'><a>Add Post</a>
+  <li role="presentation" id="new-post"><a>Add Post</a>
   <li role="presentation" id="view-pages"><a>View Pages</a></li>
   <li role="presentation" id="new-page"><a>Add Page</a>
   <li role="presentation" id="settings"><a>Settings</a></li>
@@ -98,7 +98,7 @@
 <!--List of Posts/Pages-->
 <div id="dashboard-list" class="col-xs-10 col-sml-10 col-md-10">
   <h2 id="dash-list-header">All Blog Posts</h2>
-  <div id='dash-list-container' class="list-group">
+  <div id="dash-list-container" class="list-group">
   </div>
 </div>
 <!-- Button trigger modal -->
@@ -129,52 +129,52 @@
 <!--End list of Posts/Pages-->
 
 <!-- New Post View-->
-<div id='create-post-view' class="col-xs-10 col-sml-10 col-md-10">
-<form>
+<div id="create-post-view" class="col-xs-10 col-sml-10 col-md-10">
+<form id="create-post">
   <div class="form-group">
-    <label for="create-title">Title</label>
-    <input type="text" name="post[title]" class="form-control" id="create-post-title">
+    <label for="create-title">Title<span class="asterisk"> *</span></label>
+    <input type="text" name="post[title]" class="form-control" required>
   </div>
   <div class="form-group">
-    <label for="create-post-content">Content</label>
-    <textarea class="form-control" name="post[content]" id="create-post-content" rows="20"></textarea>
+    <label for="create-post-content">Content<span class="asterisk"> *</span></label>
+    <textarea class="form-control" name="post[content]" rows="20" required></textarea>
   </div>
-  <button id="publish-new-post"type="submit" class="btn btn-primary">Publish</button>
+  <button type="submit" class="btn btn-primary">Publish</button>
   <button id="cancel-create-post" type="submit" class="btn btn-secondary">Cancel</button>
 </form>
 </div>
 <!-- End of New Post View -->
 
 <!-- New Page View-->
-<div id='create-page-view' class="col-xs-10 col-sml-10 col-md-10">
-<form>
+<div id="create-page-view" class="col-xs-10 col-sml-10 col-md-10">
+<form id="create-page">
   <div class="form-group">
-    <label for="create-title">Title</label>
-    <input type="text" name="post[title]" class="form-control" id="create-page-title">
+    <label for="create-title">Title<span class="asterisk"> *</span></label>
+    <input type="text" name="page[title]" class="form-control" required>
   </div>
   <div class="form-group">
-    <label for="create-page-content">Content</label>
-    <textarea class="form-control" name="post[content]" id="create-page-content" rows="20"></textarea>
+    <label for="create-page-content">Content<span class="asterisk"> *</span></label>
+    <textarea class="form-control" name="page[content]" rows="20" required></textarea>
   </div>
-  <button id="publish-new-page" type="submit" class="btn btn-primary">Publish</button>
+  <button type="submit" class="btn btn-primary">Publish</button>
   <button id="cancel-create-page" type="submit" class="btn btn-secondary">Cancel</button>
 </form>
 </div>
 <!-- End of New Page View -->
 
 <!--Edit Post/Page View-->
-<div id='edit-view' class="col-xs-10 col-sml-10 col-md-10">
-<form>
+<div id="edit-view" class="col-xs-10 col-sml-10 col-md-10">
+<form id="edit-page"> <!--Will need to have "edit-post" for edit post handlebars. Will have to reference this id when doing an update-->
   <div class="form-group">
-    <label for="edit-title">Title</label>
-    <input type="text" name="post[title]"class="form-control" id="edit-title">
+    <label for="edit-title">Title<span class="asterisk"> *</span></label>
+    <input type="text" name="page[title]" class="form-control" required>
   </div>
   <div class="form-group">
-    <label for="edit-content">Content</label>
-    <textarea class="form-control" name="post[content]" id="edit-content" rows="20"></textarea>
+    <label for="create-page-content">Content<span class="asterisk"> *</span></label>
+    <textarea class="form-control" name="page[content]" rows="20" required></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Publish</button>
-  <button type="submit" class="btn btn-secondary">Cancel</button>
+  <button id="cancel-edit" type="submit" class="btn btn-secondary">Cancel</button>
 </form>
 </div>
 <!--End of Edit Post/Page View-->
@@ -185,12 +185,12 @@
     <form id="change-password">
         <legend>Change Password</legend>
       <div class="form-group">
-        <label>Current Password</label>
-        <input type="password" name="passwords[old]" class="form-control">
+        <label>Current Password<span class="asterisk"> *</span></label>
+        <input type="password" name="passwords[old]" class="form-control" required>
       </div>
       <div class="form-group">
-        <label>New Password</label>
-        <input type="password" name="passwords[new]" class="form-control">
+        <label>New Password<span class="asterisk"> *</span></label>
+        <input type="password" name="passwords[new]" class="form-control" required>
       </div>
       <button type="submit" class="btn btn-primary">Update Password</button>
     </form>
@@ -201,8 +201,8 @@
     <form id="update-site-name">
         <legend>Change Site Name</legend>
       <div class="form-group">
-        <label>Site Name</label>
-        <input type="text" name="site[name]" class="form-control">
+        <label>Site Name<span class="asterisk"> *</span></label>
+        <input type="text" name="site[name]" class="form-control" required>
       </div>
       <button type="submit" class="btn btn-primary">Update Site Name</button>
     </form>
@@ -244,8 +244,8 @@
           <form id="create-site">
             <fieldset>
               <legend class="sign-in-header .col-form-legend">Create a Site</legend>
-              <label>Site Name</label>
-              <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name">
+              <label>Site Name<span class="asterisk"> *</span></label>
+              <input class="form-control form-control-lg" type="text" name="site[name]" placeholder="Enter Site Name" required>
               <br>
               <button type="submit" name="submit" class="btn btn-primary mb-1">Create Site</button>
               <br>
