@@ -85,8 +85,8 @@ const onDeletePost = function (event) {
     .then(onGetPosts)
     .then(() => {
       console.log('is this running - after destroy to update success message.')
-     $('#error-success-msg').text('Post deleted successfully.')
-   })
+      $('#error-success-msg').text('Post deleted successfully.')
+    })
     .catch(ui.deletePostFailure)
 }
 
@@ -230,7 +230,11 @@ const addHandlers = function () {
   $(document).on('click', '.delete-post', (event) => {
     $('#confirm-delete-post').attr('data-id', event.target.dataset.id)
   })
-  $('#confirm-delete-post').on('click', onDeletePost) // DOES NOT EXIST - <a>?
+  $('#confirm-delete-post').on('click', onDeletePost)
+  $(document).on('click', '.delete-page', (event) => {
+    $('#confirm-delete-page').attr('data-id', event.target.dataset.id)
+  })
+  $('#confirm-delete-page').on('click', onDeletePage)
   $('#edit-post').on('click', onEditPost) // DOES NOT EXIST (Handlebars) - will be <a>?
   $('#update-post').on('submit', onUpdatePost) // DOES NOT EXIST
   $('#cancel-update-post').on('click', onCancelUpdatePost) // DOES NOT EXIST
