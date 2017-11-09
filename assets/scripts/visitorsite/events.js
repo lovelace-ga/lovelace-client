@@ -18,7 +18,7 @@ const loadSite = function (siteId) {
 const readMore = function (event) {
   let newContent = ''
   const postId = event.target.dataset.id
-  const siteId = store.site.id
+  const siteId = store.publicSite.id
   siteAjax.getOneSite(siteId)
     .then((siteData) => {
       return siteData.site
@@ -48,7 +48,7 @@ const readLess = function (event) {
 const getPageContent = function (event) {
   const pageId = event.target.dataset.id
   // console.log('event.target', event.target.dataset.id)
-  const pageArray = store.site.pages
+  const pageArray = store.publicSite.pages
   let pageData = ''
   pageArray.forEach((page) => {
     if (page.id === pageId) { // finds page with id matching data-id from button
