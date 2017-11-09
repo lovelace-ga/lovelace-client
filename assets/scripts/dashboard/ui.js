@@ -81,6 +81,10 @@ const updatePostFailure = function (data) {
 
 const getPagesSuccess = function (site) {
   // console.log('pages is', site.pages)
+  site.pages.forEach(page => {
+    page['createdAt'] = (page['createdAt'].split('T'))[0]
+  }
+  )
   const showList = pageListTemplate({ pages: site.pages })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Site Pages')
