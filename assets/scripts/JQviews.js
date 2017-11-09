@@ -28,6 +28,8 @@ const landingPageView = function () {
   $('#create-post-view textarea').val(null)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
+  $('#create-site input:text').val(null)
+  $('#change-password input').val(null)
 }
 
 const dashboardView = function () {
@@ -55,6 +57,8 @@ const dashboardView = function () {
   $('#create-post-view textarea').val(null)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
+  $('#create-site input:text').val(null)
+  $('#change-password input').val(null)
 }
 
 const createPostView = function () {
@@ -81,6 +85,8 @@ const createPostView = function () {
   $('#settings').removeClass()
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
+  $('#create-site input:text').val(null)
+  $('#change-password input').val(null)
 }
 
 const createPageView = function () {
@@ -107,6 +113,8 @@ const createPageView = function () {
   $('#settings').removeClass()
   $('#create-post-view input').val(null)
   $('#create-post-view textarea').val(null)
+  $('#create-site input:text').val(null)
+  $('#change-password input').val(null)
 }
 
 const editPostView = function () {
@@ -130,6 +138,8 @@ const editPostView = function () {
   $('#create-post-view textarea').val(null)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
+  $('#create-site input:text').val(null)
+  $('#change-password input').val(null)
 }
 
 const editPageView = function () {
@@ -153,6 +163,8 @@ const editPageView = function () {
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
   $('#error-success-msg').text('')
+  $('#create-site input:text').val(null)
+  $('#change-password input').val(null)
 }
 
 const settingsView = function () {
@@ -182,6 +194,7 @@ const settingsView = function () {
   $('#create-post-view textarea').val(null)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
+  $('#create-site input:text').val(null)
 }
 
 const createSiteView = function () {
@@ -205,6 +218,10 @@ const createSiteView = function () {
   $('#create-post-view textarea').val(null)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
+  $('#change-password input').val(null)
+  $('#return-to-dash').hide()
+  $('#sign-out-link').show()
+  $('#return-to-landing').show()
 }
 
 const publicView = function () {
@@ -231,6 +248,8 @@ const publicView = function () {
   $('#create-post-view textarea').val(null)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
+  $('#create-site input:text').val(null)
+  $('#change-password input').val(null)
 }
 module.exports = {
   landingPageView,

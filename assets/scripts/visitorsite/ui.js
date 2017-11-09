@@ -6,7 +6,7 @@ const store = require('../store')
 
 const loadSiteSuccess = function (siteData) {
   $('.navbar-brand').text(siteData.site.name)
-  store.site = siteData.site
+  store.publicSite = siteData.site
   return siteData.site
 }
 const showPublicPages = function (data) {

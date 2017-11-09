@@ -165,7 +165,7 @@ const getOneSiteFailure = function () {
 }
 
 const destroySiteSuccess = function () {
-  store.site = {}
+  store.site = null
   $('#navbar-header').text('')
   $('#error-success-msg').text('Successfully deleted your site')
   // Show success message to user
@@ -183,7 +183,11 @@ const createSiteSuccess = function (data) {
   $('#create-site input:text').val(null)
   views.dashboardView()
   $('#dash-list-container').html('<p>Click the buttons to the left to create your first blog post</p>')
-  // Show success message to user
+  $('#new-page').removeClass()
+  $('#view-posts').addClass('active')
+  $('#view-pages').removeClass()
+  $('#new-post').removeClass()
+  $('#settings').removeClass()
 }
 
 const createSiteFailure = function () {
