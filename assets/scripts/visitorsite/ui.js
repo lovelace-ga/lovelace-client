@@ -10,7 +10,7 @@ const loadSiteSuccess = function (siteData) {
   return siteData.site
 }
 const showPublicPages = function (data) {
-  console.log('data is', data)
+  // console.log('data is', data)
   const showPageList = publicPagesTemplate({ pages: data.pages })
   $('#public-nav-list').html(showPageList)
   views.publicView()
@@ -33,7 +33,7 @@ const loadSiteFailure = function () {
 const showPageContent = function (pageData) {
   $('#public-posts').hide()
   $('#site-page-header').text(pageData.title)
-  $('#site-page-content').text(pageData.content)
+  $('#site-page-content').html("<p style='white-space: pre-wrap'>" + pageData.content + '</p>')
 }
 module.exports = {
   loadSiteSuccess,

@@ -47,7 +47,7 @@ const readLess = function (event) {
 }
 const getPageContent = function (event) {
   const pageId = event.target.dataset.id
-  console.log('event.target', event.target.dataset.id)
+  // console.log('event.target', event.target.dataset.id)
   const pageArray = store.site.pages
   let pageData = ''
   pageArray.forEach((page) => {
