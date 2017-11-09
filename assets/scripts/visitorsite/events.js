@@ -1,8 +1,9 @@
 'use strict'
 const store = require('../store')
 const views = require('../JQviews')
-const landingEvents = require('../landingpage/events')
+// const landingEvents = require('../landingpage/events')
 const siteAjax = require('../AJAX/siteajax')
+const landingUi = require('../landingpage/ui')
 // const postAjax = require('../AJAX/postajax')
 
 const ui = require('./ui')
@@ -70,9 +71,16 @@ const onReturnToDash = function (event) {
     views.dashboardView()
   }
 }
+const listAllSites = function () {
+  // event.preventDefault() // I think this isn't needed
+  siteAjax.getAllSites()
+    .then(landingUi.getSitesSuccess)
+    .catch(landingUi.getSitesFailure)
+}
+
 const addHandlers = function () {
   $('#return-to-landing').on('click', () => {
-    landingEvents.listAllSites()
+    listAllSites()
     views.landingPageView()
     if (store.user) {
       $('#return-to-dash').show()
