@@ -1,7 +1,7 @@
 'use strict'
 const store = require('../store')
 const views = require('../JQviews')
-
+const landingEvents = require('../landingpage/events')
 const siteAjax = require('../AJAX/siteajax')
 // const postAjax = require('../AJAX/postajax')
 
@@ -72,6 +72,7 @@ const onReturnToDash = function (event) {
 }
 const addHandlers = function () {
   $('#return-to-landing').on('click', () => {
+    landingEvents.listAllSites()
     views.landingPageView()
     if (store.user) {
       $('#return-to-dash').show()
