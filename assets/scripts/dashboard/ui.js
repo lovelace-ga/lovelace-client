@@ -34,6 +34,9 @@ const publishPageFailure = function () {
 }
 
 const getPostsSuccess = function (data) {
+  data.site.blog.forEach(post => {
+    post['createdAt'] = (post['createdAt'].split('T'))[0]
+  })
   const showList = postListTemplate({ ps: data.site.blog })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Blog Posts')
