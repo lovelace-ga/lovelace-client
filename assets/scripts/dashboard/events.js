@@ -16,7 +16,7 @@ const onNewPost = function (event) {
 
 const onPublishNewPost = function (event) {
   const data = getFormFields(event.target)
-  console.log('onPublishNewPost data is', data)
+  // console.log('onPublishNewPost data is', data)
   event.preventDefault()
   postApi.create(data)
     .then(ui.publishPostSuccess)
@@ -38,7 +38,7 @@ const onNewPage = function (event) {
 
 const onPublishNewPage = function (event) {
   const data = getFormFields(event.target)
-  console.log('onPublishNewPost data is', data)
+  // console.log('onPublishNewPost data is', data)
   event.preventDefault()
   pageApi.create(data)
     .then(ui.publishPageSuccess)
@@ -61,7 +61,7 @@ const onGetPosts = function () {
     event.preventDefault()
   }
   const siteID = store.site._id
-  console.log('site id is', store.site._id)
+  // console.log('site id is', store.site._id)
   siteApi.getOneSite(siteID)
     .then((site) => {
       store.site = site.site
@@ -73,14 +73,14 @@ const onGetPosts = function () {
 const onViewPost = function (event) {
   const postId = event.target.dataset.id
   $('#post-id').val(postId)
-  console.log('onViewPost postId is', postId)
+  // console.log('onViewPost postId is', postId)
   const blogArray = store.site.blog
-  console.log('onViewPost store.site.blog is', store.site.blog)
+  // console.log('onViewPost store.site.blog is', store.site.blog)
   let viewPost = ''
   blogArray.forEach((post) => {
     if (postId === post._id) {
       viewPost = post
-      console.log('onViewPost in forEach viewPost is', viewPost)
+      // console.log('onViewPost in forEach viewPost is', viewPost)
       return viewPost
     }
   })
@@ -89,7 +89,7 @@ const onViewPost = function (event) {
 const onUpdatePost = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('onUpdatePost data is ', data)
+  // console.log('onUpdatePost data is ', data)
   postApi.update(data)
     .then(ui.updatePostSuccess)
     .then(onGetPosts)
@@ -107,7 +107,7 @@ const onDeletePost = function (event) {
   postApi.destroy(postForDelete)
     .then(onGetPosts)
     .then(() => {
-      console.log('is this running - after destroy to update success message.')
+      // console.log('is this running - after destroy to update success message.')
       $('#error-success-msg').text('Post deleted successfully.')
     })
     .catch(ui.deletePostFailure)
@@ -115,7 +115,7 @@ const onDeletePost = function (event) {
 
 const onGetPages = function (event) {
   const siteID = store.site._id
-  console.log('site id is', store.site._id)
+  // console.log('site id is', store.site._id)
   siteApi.getOneSite(siteID)
     .then((site) => {
       store.site = site.site
@@ -126,7 +126,7 @@ const onGetPages = function (event) {
   // event.preventDefault()
   //
   // const siteID = store.site.id
-  // console.log('clicked pages', siteID)
+  // // console.log('clicked pages', siteID)
   // siteApi.getOneSite(siteID)
   //   .then(ui.getPagesSuccess)
 }
@@ -134,9 +134,9 @@ const onGetPages = function (event) {
 const onViewPage = function (event) {
   const pageId = event.target.dataset.id
   $('#page-id').val(pageId)
-  console.log('onViewPage pageId is', pageId)
+  // console.log('onViewPage pageId is', pageId)
   const pagesArray = store.site.pages
-  console.log('onViewPage store.site.pages is', store.site.pages)
+  // console.log('onViewPage store.site.pages is', store.site.pages)
   let viewPage = ''
   pagesArray.forEach((page) => {
     if (pageId === page._id) {
@@ -150,7 +150,7 @@ const onViewPage = function (event) {
 const onUpdatePage = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('onUpdatePost data is ', data)
+  // console.log('onUpdatePost data is ', data)
   pageApi.update(data)
     .then(ui.updatePageSuccess)
     .then(onGetPages)
@@ -182,7 +182,7 @@ const onDeletePage = function (event) {
 const onChangePassword = function (event) {
   const data = getFormFields(event.target)
   event.preventDefault()
-  console.log('onChangePassword data is', data)
+  // console.log('onChangePassword data is', data)
   authApi.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
@@ -190,9 +190,9 @@ const onChangePassword = function (event) {
 
 const onChangeSiteName = function (event) {
   const data = getFormFields(event.target)
-  console.log('onChangeSiteName data is', data)
+  // console.log('onChangeSiteName data is', data)
   event.preventDefault()
-  console.log('onChangeSiteName store.site.id is', store.site._id)
+  // console.log('onChangeSiteName store.site.id is', store.site._id)
   siteApi.updateSite(data)
     .then(ui.changeSiteNameSuccess)
     .then(() => siteApi.getOneSite(store.site._id))
@@ -216,7 +216,7 @@ const onDeleteSite = function (event) {
 
 const onCreateSite = function (event) {
   const data = getFormFields(event.target)
-  console.log('onCreateSite data is', data)
+  // console.log('onCreateSite data is', data)
   event.preventDefault()
   siteApi.createSite(data.site)
     .then(ui.createSiteSuccess)
@@ -243,7 +243,7 @@ const addHandlers = function () {
 
   $('#confirm-delete-post').on('click', onDeletePost)
   $(document).on('click', '.delete-page', (event) => {
-    console.log('setting the button id', event.target.dataset.id)
+    // console.log('setting the button id', event.target.dataset.id)
     $('#confirm-delete-page').attr('data-id', event.target.dataset.id)
   })
   $('#confirm-delete-page').on('click', onDeletePage)

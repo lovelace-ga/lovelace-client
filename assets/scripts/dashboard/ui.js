@@ -7,7 +7,7 @@ const publicEvents = require('../visitorsite/events')
 
 const publishPostSuccess = function (data) {
   $('#error-success-msg').text('New post created successfully!')
-  console.log('publishPostSuccess data is', data)
+  // console.log('publishPostSuccess data is', data)
   $('#create-post-view input').val(null)
   $('#create-post-view textarea').val(null)
   views.dashboardView()
@@ -21,7 +21,7 @@ const publishPostFailure = function () {
 
 const publishPageSuccess = function (data) {
   $('#error-success-msg').text('New page created successfully!')
-  console.log('publishPageSuccess data is', data)
+  // console.log('publishPageSuccess data is', data)
   $('#create-page-view input').val(null)
   $('#create-page-view textarea').val(null)
   views.dashboardView()
@@ -80,7 +80,7 @@ const updatePostFailure = function (data) {
 }
 
 const getPagesSuccess = function (site) {
-  console.log('pages is', site.pages)
+  // console.log('pages is', site.pages)
   const showList = pageListTemplate({ pages: site.pages })
   $('#dash-list-container').html(showList)
   $('#dash-list-header').text('All Site Pages')
@@ -153,19 +153,19 @@ const changeSiteNameFailure = function () {
 }
 
 const getOneSiteSuccess = function (data) {
-  console.log('getOneSiteSuccess data is', data)
+  // console.log('getOneSiteSuccess data is', data)
   store.site = data.site
   $('#navbar-header').text(store.site.name)
   // Show success message to user
 }
 
-const getOneSiteFailure = function (error) {
-  console.log('getOneSiteFailure error is', error)
+const getOneSiteFailure = function () {
+  // console.log('getOneSiteFailure error is', error)
   // Show success message to user
 }
 
 const destroySiteSuccess = function () {
-  store.site = {}
+  store.site = null
   $('#navbar-header').text('')
   $('#error-success-msg').text('Successfully deleted your site')
   // Show success message to user
@@ -178,12 +178,16 @@ const destroySiteFailure = function () {
 
 const createSiteSuccess = function (data) {
   store.site = data.site
-  console.log('createSiteSuccess store', store)
+  // console.log('createSiteSuccess store', store)
   $('#navbar-header').text(store.site.name)
   $('#create-site input:text').val(null)
   views.dashboardView()
   $('#dash-list-container').html('<p>Click the buttons to the left to create your first blog post</p>')
-  // Show success message to user
+  $('#new-page').removeClass()
+  $('#view-posts').addClass('active')
+  $('#view-pages').removeClass()
+  $('#new-post').removeClass()
+  $('#settings').removeClass()
 }
 
 const createSiteFailure = function () {

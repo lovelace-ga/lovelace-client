@@ -2,10 +2,17 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 $app-red: #da568a;
+$app-bg-color: #e2eef5;
+$message-color: #da6d09;
 
 a {
   cursor: pointer;
 }
+
+body {
+  background-color: $app-bg-color;
+}
+
 
 .asterisk {
   color: $app-red;
@@ -25,4 +32,10 @@ a {
 
 .delete-site-btn {
   margin-top: 30px;
+}
+
+.error-success-message {
+  color: $message-color;
+  float: right;
+  font-weight: bold;
 }
