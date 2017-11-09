@@ -26,7 +26,7 @@ const update = function (data) {
 
 const destroy = function (id) {
   return $.ajax({
-    url: config.apiOrigin + '/deletepage',
+    url: config.apiOrigin + '/delete-page',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

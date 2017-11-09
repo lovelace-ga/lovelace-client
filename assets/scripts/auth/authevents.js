@@ -12,9 +12,9 @@ const apiSite = require('../AJAX/siteajax')
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('onSignUp data is', data)
+  // // console.log('onSignUp data is', data)
   const siteData = data.site
-  console.log('siteData is', siteData)
+  // // console.log('siteData is', siteData)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .then(() => api.signIn(data))
@@ -29,17 +29,17 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  console.log('onSignIn data is', data)
+  // // console.log('onSignIn data is', data)
   api.signIn(data)
     .then(ui.signInSuccess)
     .then(() => {
-      console.log('onSignIn store.user.id', store.user.id)
+      // console.log('onSignIn store.user.id', store.user.id)
       const sitesArray = store.sites
-      console.log('onSignIn store.sites is', store.sites)
+      // console.log('onSignIn store.sites is', store.sites)
       sitesArray.forEach((site) => {
         if (store.user.id === site._owner) {
           store.site = site
-          console.log('onSignIn store.site is', store.site)
+          // console.log('onSignIn store.site is', store.site)
           dashEvents.onGetPosts()
         }
       })
