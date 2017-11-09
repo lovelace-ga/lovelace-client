@@ -57,6 +57,19 @@ const getPageContent = function (event) {
   })
   ui.showPageContent(pageData)
 }
+
+const onReturnToDash = function (event) {
+  if (!store.site) {
+    views.createSiteView()
+  } else {
+    $('#new-page').removeClass()
+    $('#view-posts').addClass('active')
+    $('#view-pages').removeClass()
+    $('#new-post').removeClass()
+    $('#settings').removeClass()
+    views.dashboardView()
+  }
+}
 const addHandlers = function () {
   $('#return-to-landing').on('click', () => {
     views.landingPageView()
@@ -67,7 +80,7 @@ const addHandlers = function () {
       $('#sign-up-div').hide()
     }
   })
-  $('#return-to-dash').on('click', views.dashboardView)
+  $('#return-to-dash').on('click', onReturnToDash)
 
   $(document).on('click', '.read-more', readMore)
   $(document).on('click', '.read-less', readLess)
