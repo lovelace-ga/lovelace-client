@@ -95,7 +95,7 @@ const addHandlers = function () {
   $(document).on('click', '.read-less', readLess)
   $(document).on('click', '.page-button', getPageContent)
   $(document).on('click', '#blog-button', () => {
-    loadSite(store.site.id)
+    loadSite(store.publicSite.id)
   })
 }
 module.exports = {
